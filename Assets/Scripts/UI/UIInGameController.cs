@@ -9,12 +9,21 @@ public class UIInGameController : MonoBehaviour {
 	public GameObject buildBackground;
 	public GameObject uiBuildingOptions;
 
+	//STATISTICS_UI
+
+
 	//BACKGROUND
 	public GameObject buildBG;
 
 	//ANIMATIONS
 	public Animator openBuildOptions;
 	public Animator openBuildingOptions;
+
+
+	void Start(){
+		//currentSubmenu recebe o coins primeiro
+		//currentSubmenu = submenus [0];
+	}
 
 	public void ActiveBuildMode(){
 		uiBuildButton.SetActive(false);				//Desativa o botao do menu de contruir
@@ -49,4 +58,32 @@ public class UIInGameController : MonoBehaviour {
 		//ativa a animaçao
 		openBuildingOptions.SetBool ("ShowDescribe", true);
 	}
+
+	#region STATISTICS_UI
+	public void ActiveStatisticsMode(){
+		//Ativa o Panel Background (cinza)
+		//Ativa anomaçao da janela
+		ClickStatisticsOption ();			//Inicia com a opçao 'moedas' selecionada
+		//
+	}
+
+	public void DeactiveStatisticsMode(){
+
+	}
+
+	public void ClickStatisticsOption(){
+		//Muda o sprite do botao
+		//Começa com o 'moedas'
+
+	}
+
+
+	public void ChangeSprite(GameObject obj){
+
+	}
+
+	public void ChooseStatisticsSubmenu(){
+		Debug.Log ("Teste");
+	}
+	#endregion
 }
