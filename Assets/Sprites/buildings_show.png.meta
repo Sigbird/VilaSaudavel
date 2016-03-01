@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 4eb5ff196d13a3c4b8f24f1378fabc16
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: buildings_show_0
+    21300002: buildings_show_1
+    21300004: buildings_show_2
+    21300006: buildings_show_3
+    21300008: buildings_show_4
+    21300010: buildings_show_5
+    21300012: buildings_show_6
+    21300014: buildings_show_8
+    21300016: buildings_show_9
+    21300018: buildings_show_10
+    21300020: buildings_show_11
+    21300022: buildings_show_12
+    21300024: buildings_show_13
+    21300026: buildings_show_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: buildings_show_0
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1194
+        width: 152
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_1
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 1172
+        width: 245
+        height: 306
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_2
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 1224
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_3
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 1225
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 817
+        width: 192
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_5
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 828
+        width: 269
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_6
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 863
+        width: 200
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_8
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 435
+        width: 319
+        height: 257
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_9
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 449
+        width: 243
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_10
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 437
+        width: 295
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 78
+        width: 223
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_12
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 78
+        width: 288
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_13
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 72
+        width: 300
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buildings_show_14
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 1159
+        width: 215
+        height: 241
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

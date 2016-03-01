@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<ParentalBaseDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Questions>
+    <Question Question="Quantos lados tem um hexágono?">
+      <WrongAnswers>
+        <WrongAnswer>1</WrongAnswer>
+        <WrongAnswer>3</WrongAnswer>
+        <WrongAnswer>4</WrongAnswer>
+        <WrongAnswer>5</WrongAnswer>
+        <WrongAnswer>7</WrongAnswer>
+      </WrongAnswers>
+      <CorrectAnswer>6</CorrectAnswer>
+    </Question>
+  </Questions>
+</ParentalBaseDatabase>

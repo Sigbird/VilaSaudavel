@@ -16,7 +16,7 @@ public class ButtonProperties : MonoBehaviour {
 	protected ButtonsController buttonsController;
 	#endregion
 
-	void Start(){
+	void Awake(){
 		_isSelected = false;
 		normalSrpite = thisButton.GetComponent<Image> ().sprite;
 		buttonsController = this.gameObject.GetComponentInParent<ButtonsController> ();

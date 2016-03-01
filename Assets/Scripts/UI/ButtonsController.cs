@@ -34,13 +34,14 @@ public class ButtonsController : MonoBehaviour {
 				properties.DeactiveSubmenu();
 			}
 
-//			if(!selectdButton.Equals(buttons[i])){
-//				ButtonProperties properties = buttons[i].GetComponent<ButtonProperties>();
-//				properties._isSelected = false;
-//				properties.ChangeSprite();
-//				properties.DeactiveSubmenu();
-//			}
+			if(!selectdButton.Equals(buttons[i])){
+				ButtonProperties properties = buttons[i].GetComponent<ButtonProperties>();
+				properties._isSelected = false;
+				properties.ChangeSprite();
+				properties.DeactiveSubmenu();
+			}
 		}
+
 
 
 	}
