@@ -18,4 +18,8 @@ public class Disease : MonoBehaviour {
     //Aplica dano na saúde da vila
     public void ApplyDamageHealth() { }
 
+    //Aplica dano nas casas
+    public void ApplyDamegeInHouse() { }
+
+
 }

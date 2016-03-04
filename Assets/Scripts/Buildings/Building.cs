@@ -7,7 +7,6 @@ public class Building : MonoBehaviour {
     private Vector2 buildingTileSize;
     public int healthGrants;
     public int cost;
-    
 
 	void Start () {
 	}
