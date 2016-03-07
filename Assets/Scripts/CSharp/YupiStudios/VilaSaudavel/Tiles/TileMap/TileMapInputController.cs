@@ -542,10 +542,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		
 		// Update is called once per frame
 		void Update () {
-
-
 			UpdateInputType ();
-		
 		}
+
 	}
 }

@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class ButtonsController : MonoBehaviour {
 
 	public GameObject[] buttons;
-	private GameObject selectdButton;
+	private GameObject selectedButton;
 	private ButtonProperties currentButtonProp;
 
 	void Start(){
-		selectdButton = buttons [0];
-		currentButtonProp = selectdButton.GetComponent<ButtonProperties> ();
+		selectedButton = buttons [0];
+		currentButtonProp = selectedButton.GetComponent<ButtonProperties> ();
 		currentButtonProp._isSelected = true;
 		currentButtonProp.ChangeSprite ();
 		currentButtonProp.ActiveSubmenu ();
@@ -19,22 +19,21 @@ public class ButtonsController : MonoBehaviour {
 	
 	public void UpdateButtons(GameObject button){
 
-		//COMO VERIFICAR QUAL E O BOTAO???????
-		selectdButton = button;
-		currentButtonProp = selectdButton.GetComponent<ButtonProperties> ();
+		selectedButton = button;
+		currentButtonProp = selectedButton.GetComponent<ButtonProperties> ();
 		currentButtonProp._isSelected = true;
 		currentButtonProp.ChangeSprite ();
 		currentButtonProp.ActiveSubmenu ();
 
 		for(int i = 0; i < buttons.Length; i++){
-			if(!buttons[i].Equals(selectdButton)){
+			if(!buttons[i].Equals(selectedButton)){
 				ButtonProperties properties = buttons[i].GetComponent<ButtonProperties>();
 				properties._isSelected = false;
 				properties.ChangeSprite();
 				properties.DeactiveSubmenu();
 			}
 
-			if(!selectdButton.Equals(buttons[i])){
+			if(!selectedButton.Equals(buttons[i])){
 				ButtonProperties properties = buttons[i].GetComponent<ButtonProperties>();
 				properties._isSelected = false;
 				properties.ChangeSprite();
