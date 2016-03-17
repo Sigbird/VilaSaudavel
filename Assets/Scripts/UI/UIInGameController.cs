@@ -4,10 +4,13 @@ using System.Collections;
 public class UIInGameController : MonoBehaviour {
 
 	//BUTTONS
+	public GameObject uiFrontPanel;
 	public GameObject uiBuildButton;
+	public GameObject uiFinishBuildButton;
 	public GameObject uiBackBuildButon;
 	public GameObject buildBackground;
 	public GameObject uiBuildingOptions;
+
 
 	//STATISTICS_UI
 
@@ -36,6 +39,7 @@ public class UIInGameController : MonoBehaviour {
 	public void DeactiveBuildMode(){
 		uiBackBuildButon.SetActive(false);			//Desativa o botao de voltar
 		uiBuildButton.SetActive(true);				//Ativa o botao do menu de construir
+		uiFrontPanel.SetActive(true);				//Desativa painel frontal
 		buildBackground.SetActive (false);			//Desativa o background
 		buildBG.SetActive (false);					//Desativa o panel background (tela cinza de fundo)
 		openBuildOptions.SetTrigger ("Pressed");	//Dispara o trigger da animaçao
@@ -44,11 +48,16 @@ public class UIInGameController : MonoBehaviour {
 	}
 
 	//METODO PRECISA SER REVISTO
-	void ActiveBuildingOptions(){
-		//ativa o panel
-		uiBuildingOptions.SetActive (true);
-		//inicia a animaçao
-		openBuildingOptions.SetTrigger("BuildingPressed");
+	public void ActiveBuildingOptions(){
+		uiBackBuildButon.SetActive(true);			//Ativa o botao de voltar
+		uiBuildButton.SetActive(false);				//Desativa botao do menu de construir
+		uiFrontPanel.SetActive(false);				//Desativa painel frontal
+		uiFinishBuildButton.SetActive(true);		//Ativa o botao de finalizar construcao
+		buildBackground.SetActive (false);			//Desativa o background
+		buildBG.SetActive (false);					//Desativa o panel background (tela cinza de fundo)
+		openBuildOptions.SetTrigger ("Pressed");	//Dispara o trigger da animaçao
+		openBuildingOptions.SetBool ("ShowDescribe", false);
+		uiBuildingOptions.SetActive (false);
 	}
 
 	public void ShowBuildingDescription(){
