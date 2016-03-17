@@ -10,6 +10,8 @@ public class UIInGameController : MonoBehaviour {
 	public GameObject uiBackBuildButon;
 	public GameObject buildBackground;
 	public GameObject uiBuildingOptions;
+	public GameObject uiBuildingOptions2;
+	public GameObject uiBuildingOptions3;
 
 
 	//STATISTICS_UI
@@ -45,6 +47,8 @@ public class UIInGameController : MonoBehaviour {
 		openBuildOptions.SetTrigger ("Pressed");	//Dispara o trigger da animaçao
 		openBuildingOptions.SetBool ("ShowDescribe", false);
 		uiBuildingOptions.SetActive (false);
+		uiBuildingOptions2.SetActive (false);
+		uiBuildingOptions3.SetActive (false);
 	}
 
 	//METODO PRECISA SER REVISTO
@@ -58,11 +62,27 @@ public class UIInGameController : MonoBehaviour {
 		openBuildOptions.SetTrigger ("Pressed");	//Dispara o trigger da animaçao
 		openBuildingOptions.SetBool ("ShowDescribe", false);
 		uiBuildingOptions.SetActive (false);
+		uiBuildingOptions2.SetActive (false);
+		uiBuildingOptions3.SetActive (false);
 	}
 
-	public void ShowBuildingDescription(){
+	public void ShowBuildingDescription(int x){
 		//ativa o panel
-		uiBuildingOptions.SetActive (true);
+		switch (x) {
+		case 1:
+			uiBuildingOptions.SetActive (true);
+			break;
+		case 2:
+			uiBuildingOptions2.SetActive (true);
+			break;
+		case 3:
+			uiBuildingOptions3.SetActive (true);
+			break;
+		default:
+			print ("uiBuildOption Unavaiable");
+			break;
+		
+		}
 		//pega as informaçoes da cunstrucao
 		//ativa a animaçao
 		openBuildingOptions.SetBool ("ShowDescribe", true);
