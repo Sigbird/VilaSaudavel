@@ -38,7 +38,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 				position = new Vector2 (10,10);
 			}
 
-			Debug.Log (position);
+			//Debug.Log (position);
 
 			if (position == TileUtils.TILE_NULL_POSITION) {
 				return;

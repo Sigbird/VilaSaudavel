@@ -440,6 +440,24 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 #endif
 
 		}
+// Start Creation Manager
+
+		public void CreateCustom(int x){
+			switch (x) {
+			case 1:
+				CreateHouse();
+				break;
+			case 2:
+				CreateHealthCenter();
+				break;
+			case 3:
+				CreateCrazy ();
+				break;
+			default:
+				print("CreateCustom error");
+				break;
+			}
+		}
 
 		public void CreateHouse()
 		{
