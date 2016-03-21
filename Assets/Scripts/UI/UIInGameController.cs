@@ -71,12 +71,18 @@ public class UIInGameController : MonoBehaviour {
 		switch (x) {
 		case 1:
 			uiBuildingOptions.SetActive (true);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
 			break;
 		case 2:
 			uiBuildingOptions2.SetActive (true);
+			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
 			break;
 		case 3:
 			uiBuildingOptions3.SetActive (true);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions.SetActive (false);
 			break;
 		default:
 			print ("uiBuildOption Unavaiable");

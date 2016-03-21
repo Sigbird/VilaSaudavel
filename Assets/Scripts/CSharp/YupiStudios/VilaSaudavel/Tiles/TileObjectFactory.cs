@@ -25,6 +25,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		public void FinishMoving()
 		{
 			if (movingObject != null) {
+
 				movingObject.FinishPlacement ();
 				movingObject = null;
 			}

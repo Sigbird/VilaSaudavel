@@ -21,6 +21,9 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 			Constructing,
 		}
 
+		private int buildID;
+
+		public UIInGameController UIController;
 		private TileMapData Data;
 		private Camera RefCamera;
 
@@ -445,13 +448,28 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void CreateCustom(int x){
 			switch (x) {
 			case 1:
-				CreateHouse();
+				if (Manager.Cash >= 20) {
+					UIController.ActiveBuildingOptions();
+					CreateHouse();
+				}else{
+					//no money
+				}
 				break;
 			case 2:
-				CreateHealthCenter();
+				if (Manager.Cash >= 50) {
+					UIController.ActiveBuildingOptions();
+					CreateHealthCenter();
+				}else{
+					//no money
+				}
 				break;
 			case 3:
-				CreateCrazy ();
+				if (Manager.Cash >= 100) {
+					UIController.ActiveBuildingOptions();
+					CreateCrazy ();
+				}else{
+					//no money
+				}
 				break;
 			default:
 				print("CreateCustom error");
@@ -461,20 +479,35 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 		public void CreateHouse()
 		{
-			objectFactory.TryInstantiateObject (0);
-			TileHighlighter.gameObject.SetActive(false);
+			if (Manager.Cash >= 20) {
+				this.buildID = 1;
+				objectFactory.TryInstantiateObject (0);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+			//animacao sem dinheiro
+			}
 		}
 
 		public void CreateHealthCenter()
 		{
-			objectFactory.TryInstantiateObject (1);
-			TileHighlighter.gameObject.SetActive(false);
+			if (Manager.Cash >= 50) {
+				this.buildID = 2;
+				objectFactory.TryInstantiateObject (1);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+			//animacao sem dinheiro
+			}
 		}
 
 		public void CreateCrazy()
 		{
-			objectFactory.TryInstantiateObject (2);
-			TileHighlighter.gameObject.SetActive(false);
+			if (Manager.Cash >= 100) {
+				this.buildID = 3;
+				objectFactory.TryInstantiateObject (2);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+			//animacao sem dinheiro
+			}
 		}
 
 		public void CreateCastle()
@@ -494,7 +527,28 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 		public void FinishCreate()
 		{
-			objectFactory.FinishMoving();
+			switch (buildID) {
+			case 1:
+				Manager.Cash = Manager.Cash - 20;
+				Manager.Pop = Manager.Pop + 20;
+				objectFactory.FinishMoving();
+				this.buildID = 0;
+				break;
+			case 2:
+				Manager.Cash = Manager.Cash - 50;
+				objectFactory.FinishMoving();
+				this.buildID = 0;
+				break;
+			case 3:
+				Manager.Cash = Manager.Cash - 100;
+				objectFactory.FinishMoving();
+				this.buildID = 0;
+				break;
+			default:
+				print("BuildID Undefined");
+				break;
+			}
+
 		}
 
 		private void UpdateInputType()
