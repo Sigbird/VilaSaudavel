@@ -466,7 +466,55 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 			case 3:
 				if (Manager.Cash >= 100) {
 					UIController.ActiveBuildingOptions();
-					CreateCrazy ();
+					CreateHospital ();
+				}else{
+					//no money
+				}
+				break;
+			case 4:
+				if (Manager.Cash >= 100) {
+					UIController.ActiveBuildingOptions();
+					CreateCondiminio();
+				}else{
+					//no money
+				}
+				break;
+			case 5:
+				if (Manager.Cash >= 100) {
+					UIController.ActiveBuildingOptions();
+					CreatePraca ();
+				}else{
+					//no money
+				}
+				break;
+			case 6:
+				if (Manager.Cash >= 100) {
+					UIController.ActiveBuildingOptions();
+					CreateLixeira ();
+				}else{
+					//no money
+				}
+				break;
+			case 7:
+				if (Manager.Cash >= 100) {
+					UIController.ActiveBuildingOptions();
+					CreateTratamento ();
+				}else{
+					//no money
+				}
+				break;
+			case 8:
+				if (Manager.Cash >= 100) {
+					UIController.ActiveBuildingOptions();
+					CreateMercado ();
+				}else{
+					//no money
+				}
+				break;
+			case 9:
+				if (Manager.Cash >= 100) {
+					UIController.ActiveBuildingOptions();
+					CreateColeta();
 				}else{
 					//no money
 				}
@@ -499,7 +547,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 			}
 		}
 
-		public void CreateCrazy()
+		public void CreateHospital()
 		{
 			if (Manager.Cash >= 100) {
 				this.buildID = 3;
@@ -510,10 +558,70 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 			}
 		}
 
-		public void CreateCastle()
+		public void CreateCondiminio()
 		{
-			objectFactory.TryInstantiateObject (3);
-			TileHighlighter.gameObject.SetActive(false);
+			if (Manager.Cash >= 0) {
+				this.buildID = 2;
+				objectFactory.TryInstantiateObject (3);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+				//animacao sem dinheiro
+			}
+		}
+
+		public void CreatePraca()
+		{
+			if (Manager.Cash >= 0) {
+				this.buildID = 2;
+				objectFactory.TryInstantiateObject (4);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+				//animacao sem dinheiro
+			}
+		}
+
+		public void CreateLixeira()
+		{
+			if (Manager.Cash >= 0) {
+				this.buildID = 1;
+				objectFactory.TryInstantiateObject (5);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+				//animacao sem dinheiro
+			}
+		}
+
+		public void CreateTratamento()
+		{
+			if (Manager.Cash >= 0) {
+				this.buildID = 1;
+				objectFactory.TryInstantiateObject (6);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+				//animacao sem dinheiro
+			}
+		}
+
+		public void CreateMercado()
+		{
+			if (Manager.Cash >= 0) {
+				this.buildID = 1;
+				objectFactory.TryInstantiateObject (7);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+				//animacao sem dinheiro
+			}
+		}
+
+		public void CreateColeta()
+		{
+			if (Manager.Cash >= 0) {
+				this.buildID = 1;
+				objectFactory.TryInstantiateObject (8);
+				TileHighlighter.gameObject.SetActive (false);
+			} else {
+				//animacao sem dinheiro
+			}
 		}
 
 		public void DestroySelected()
@@ -545,7 +653,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				this.buildID = 0;
 				break;
 			default:
-				print("BuildID Undefined");
+				objectFactory.FinishMoving();
+				this.buildID = 0;
 				break;
 			}
 

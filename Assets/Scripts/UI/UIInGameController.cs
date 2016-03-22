@@ -12,6 +12,12 @@ public class UIInGameController : MonoBehaviour {
 	public GameObject uiBuildingOptions;
 	public GameObject uiBuildingOptions2;
 	public GameObject uiBuildingOptions3;
+	public GameObject uiBuildingOptions4;
+	public GameObject uiBuildingOptions5;
+	public GameObject uiBuildingOptions6;
+	public GameObject uiBuildingOptions7;
+	public GameObject uiBuildingOptions8;
+	public GameObject uiBuildingOptions9;
 
 
 	//STATISTICS_UI
@@ -49,6 +55,12 @@ public class UIInGameController : MonoBehaviour {
 		uiBuildingOptions.SetActive (false);
 		uiBuildingOptions2.SetActive (false);
 		uiBuildingOptions3.SetActive (false);
+		uiBuildingOptions4.SetActive (false);
+		uiBuildingOptions5.SetActive (false);
+		uiBuildingOptions6.SetActive (false);
+		uiBuildingOptions7.SetActive (false);
+		uiBuildingOptions8.SetActive (false);
+		uiBuildingOptions9.SetActive (false);
 	}
 
 	//METODO PRECISA SER REVISTO
@@ -64,6 +76,12 @@ public class UIInGameController : MonoBehaviour {
 		uiBuildingOptions.SetActive (false);
 		uiBuildingOptions2.SetActive (false);
 		uiBuildingOptions3.SetActive (false);
+		uiBuildingOptions4.SetActive (false);
+		uiBuildingOptions5.SetActive (false);
+		uiBuildingOptions6.SetActive (false);
+		uiBuildingOptions7.SetActive (false);
+		uiBuildingOptions8.SetActive (false);
+		uiBuildingOptions9.SetActive (false);
 	}
 
 	public void ShowBuildingDescription(int x){
@@ -73,16 +91,109 @@ public class UIInGameController : MonoBehaviour {
 			uiBuildingOptions.SetActive (true);
 			uiBuildingOptions2.SetActive (false);
 			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (false);
 			break;
 		case 2:
-			uiBuildingOptions2.SetActive (true);
 			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (true);
 			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (false);
 			break;
 		case 3:
-			uiBuildingOptions3.SetActive (true);
-			uiBuildingOptions2.SetActive (false);
 			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (true);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (false);
+
+			break;
+		case 4:
+			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (true);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (false);
+			break;
+		case 5:
+			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (true);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (false);
+			break;
+		case 6:
+			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (true);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (false);
+			break;
+		case 7:
+			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (true);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (false);
+			break;
+		case 8:
+			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (true);
+			uiBuildingOptions9.SetActive (false);
+			break;
+		case 9:
+			uiBuildingOptions.SetActive (false);
+			uiBuildingOptions2.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions3.SetActive (false);
+			uiBuildingOptions4.SetActive (false);
+			uiBuildingOptions5.SetActive (false);
+			uiBuildingOptions6.SetActive (false);
+			uiBuildingOptions7.SetActive (false);
+			uiBuildingOptions8.SetActive (false);
+			uiBuildingOptions9.SetActive (true);
 			break;
 		default:
 			print ("uiBuildOption Unavaiable");
@@ -91,7 +202,7 @@ public class UIInGameController : MonoBehaviour {
 		}
 		//pega as informaçoes da cunstrucao
 		//ativa a animaçao
-		openBuildingOptions.SetBool ("ShowDescribe", true);
+//		openBuildingOptions.SetBool ("ShowDescribe", true);
 	}
     #endregion
 
