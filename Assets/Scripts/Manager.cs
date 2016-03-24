@@ -22,6 +22,10 @@ public class Manager : MonoBehaviour {
 
 	public Text HealthText;
 
+	public GameObject Habitant;
+
+	public GameObject RespawnHabitant;
+
 	// Use this for initialization
 	void Start () {
 		Cash = 100;
@@ -30,7 +34,7 @@ public class Manager : MonoBehaviour {
 
 		MaxHealth = 100;
 
-		Health = 0;
+		Health = 100;
 
 		Pop = 0;
 	}
@@ -38,8 +42,12 @@ public class Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.Space))
-			Cash = Cash + 100;
+
+
+		if (Input.GetKeyDown (KeyCode.Space))
+			InstantiateHabitant (1);
+
+
 
 		PopulationSphere.SetFloat("Value",((Pop / MaxPop) * 100));
 		PopulationText.text = Pop + "/" + MaxPop;
@@ -50,4 +58,30 @@ public class Manager : MonoBehaviour {
 		GameObject.Find ("Money_text").GetComponent<Text> ().text = Cash.ToString();
 
 	}
+
+	public void InstantiateHabitant(int i){
+
+		switch (i) {
+		case 1:
+			StartCoroutine("estanciar");
+			break;
+		case 2:
+			//outro
+			break;
+		default:
+			//nada
+			break;
+		}
+
+		}
+
+	IEnumerator estanciar(){
+		Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		Pop = Pop + 5;
+		yield return new WaitForSeconds (2f);
+		Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		Pop = Pop + 5;	
+	}
+
+
 }

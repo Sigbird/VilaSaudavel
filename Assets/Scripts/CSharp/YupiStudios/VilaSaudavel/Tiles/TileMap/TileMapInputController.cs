@@ -23,6 +23,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 		private int buildID;
 
+		public Manager GameManager;
+
 		public UIInGameController UIController;
 		private TileMapData Data;
 		private Camera RefCamera;
@@ -635,20 +637,24 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 		public void FinishCreate()
 		{
+
 			switch (buildID) {
 			case 1:
 				Manager.Cash = Manager.Cash - 20;
-				Manager.Pop = Manager.Pop + 20;
+				//Manager.Pop = Manager.Pop + 20;
+				GameManager.InstantiateHabitant(1);
 				objectFactory.FinishMoving();
 				this.buildID = 0;
 				break;
 			case 2:
 				Manager.Cash = Manager.Cash - 50;
+				GameManager.InstantiateHabitant(2);
 				objectFactory.FinishMoving();
 				this.buildID = 0;
 				break;
 			case 3:
 				Manager.Cash = Manager.Cash - 100;
+				GameManager.InstantiateHabitant(3);
 				objectFactory.FinishMoving();
 				this.buildID = 0;
 				break;

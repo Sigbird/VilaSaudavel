@@ -8,7 +8,7 @@ public class HabitantMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		next = GameObject.Find ("WayPoint");
 	}
 	
 	// Update is called once per frame
@@ -18,9 +18,9 @@ public class HabitantMovement : MonoBehaviour {
 //
 //		if (Vector3.Distance (this.transform.position, next.transform.position) <= )
 
-		FollowTargetWitouthRotation (this.next, Random.Range (0.1f, 0.3f), speed);
+		FollowTargetWitouthRotation (this.next, Random.Range (0.1f, 0.3f), Time.deltaTime * speed);
 		   
-		Debug.Log (GetComponent<Rigidbody> ().velocity);
+//		Debug.Log (GetComponent<Rigidbody> ().velocity);
 
 		sprite.SetFloat ("Speedx", rigidbody.velocity.x);
 		sprite.SetFloat ("Speedy", rigidbody.velocity.z);

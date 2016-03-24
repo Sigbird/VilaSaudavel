@@ -30,6 +30,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 		void Update(){
 
+			this.percentage = Manager.Pop;
+
 			timer = timer + Time.deltaTime;
 
 			if (timer >= 5) {

@@ -6,8 +6,10 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 	public class TileObjectFactory : MonoBehaviour {
 
-		public TileMapInputController tileInputController;
 
+
+		public TileMapInputController tileInputController;
+		
 		public TileUtils.MatSettings MovingMaterialSettings;
 
 		public TileUtils.MatSettings SelectedMaterialSettings;
@@ -25,10 +27,12 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		public void FinishMoving()
 		{
 			if (movingObject != null) {
-
+				Debug.Log("teste");
 				movingObject.FinishPlacement ();
 				movingObject = null;
 			}
+
+
 		}
 
 		public void TryInstantiateObject(int objectIndex)
@@ -46,7 +50,9 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			}
 
 			if (movingObject != null) {
+
 				FinishMoving();
+
 				return;
 			}
 
@@ -54,6 +60,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 				return;
 
 			if (TileMapData.CurrentState == TileMapData.EWorldMapState.Idle) {
+
 
 				GameObject obj = (Instantiate(tileObjects[objectIndex]) as Transform).gameObject;
 				TileObject tileObject = obj.GetComponent<TileObject>();
