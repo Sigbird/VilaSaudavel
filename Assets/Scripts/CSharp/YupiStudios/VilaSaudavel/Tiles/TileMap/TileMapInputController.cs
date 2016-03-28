@@ -635,6 +635,14 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 			}
 		}
 
+		public void DestroySelected2(){
+		
+			foreach (GameObject x in GameObject.FindGameObjectsWithTag("tileobject")) {
+				if(x.GetComponent<TileObject>().CurrentState == TileObject.ETileObjectState.Moving)
+					Destroy(x);
+			}
+		}
+
 		public void FinishCreate()
 		{
 

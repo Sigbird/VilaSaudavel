@@ -70,6 +70,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 					DestroyObject(obj);
 				} else 
 				{
+
+
 					tileObject.Initialize(TileMapData, MovingMaterialSettings);
 
 					tileObject.TryPosition(position);

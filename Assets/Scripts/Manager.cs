@@ -44,8 +44,8 @@ public class Manager : MonoBehaviour {
 
 
 
-		if (Input.GetKeyDown (KeyCode.Space))
-			InstantiateHabitant (1);
+		if (Input.GetKey (KeyCode.Space))
+			Cash++;
 
 
 

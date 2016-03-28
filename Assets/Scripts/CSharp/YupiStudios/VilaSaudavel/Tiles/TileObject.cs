@@ -15,6 +15,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		public enum ETileObjectState
 		{
 
+			Building,
 
 			/*
 			 * O objeto esta posicionado no mapa
@@ -125,6 +126,12 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		// posicao invalida
 		/////////////////////////////////////////////////
 		public SpriteRenderer Sprite;
+
+
+		/////////////////////////////////////////////////
+		// Animador do Objeto
+		/////////////////////////////////////////////////
+		public Animator Anim;
 
 
 
@@ -388,7 +395,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 			SetMoving (false);
 			SetSelected (false);
-			CurrentState = ETileObjectState.Placed;
+			CurrentState = ETileObjectState.Building;
+			Anim.SetBool ("Build", true);
 		}
 
 
@@ -486,7 +494,34 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			ChangeState (CurrentState);
 		}
 
+		void FixedUpdate(){
 
+			Sprite.sortingOrder = (int)TilePosition.y - (int)TilePosition.x;
+
+			if (CurrentState == ETileObjectState.Building) {
+				Sprite.renderer.enabled = false;
+
+			} else if (CurrentState == ETileObjectState.Placed) {
+				StartCoroutine("building");
+				//Anim.SetBool("Build",false);
+				//Sprite.renderer.enabled = true;
+			}
+
+			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Habitant")) {
+			
+			if(x != null && Vector3.Distance(x.transform.position, transform.position)< 2)
+					CurrentState = ETileObjectState.Placed;
+
+			}
+
+
+		}
+
+		IEnumerator building(){
+			Anim.SetBool("Build",false);
+			yield return new WaitForSeconds(1);
+			Sprite.renderer.enabled = true;
+		}
 
 
 	}
