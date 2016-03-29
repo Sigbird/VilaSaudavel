@@ -30,6 +30,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 		void Update(){
 
+
 			this.percentage = Manager.Pop;
 
 			timer = timer + Time.deltaTime;
@@ -49,10 +50,25 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 			if (this.buildingType == EBuildingType.SimpleHouse && this.month == true) {
 				notifications.SetTrigger("Paying");
+				if(this.contaminada == true){
+				Manager.Cash = Manager.Cash + 60;
+				}else{
 				Manager.Cash = Manager.Cash + 120;
+				}
 				this.month = false;
 				// roda animaçao de dinheiro
 			}
+
+			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Jaleco")) {
+				
+				if(x != null && Vector3.Distance(x.transform.position, transform.position)< 2 && this.contaminada == true){
+					this.contaminada = false;
+					notifications.SetBool("Sick", false);
+					Manager.Pop = Manager.Pop + 5;
+				}
+				
+			}
+
 		}
 
 		public void Teste(){
@@ -62,7 +78,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 			if (x <= percentage / 100 && this.contaminada == false) {
 				//Debug.Log ("contaminou");
 				notifications.SetBool("Sick", true);
-				Manager.Health = Manager.Health - 20;
+				Manager.Pop = Manager.Pop - 5;
 				//GameObject.Find ("Main Camera").GetComponent<Teste> ().infeccão++;
 				this.contaminada = true;
 			}

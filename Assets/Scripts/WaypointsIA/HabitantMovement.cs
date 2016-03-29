@@ -5,6 +5,8 @@ public class HabitantMovement : MonoBehaviour {
 	public float speed;
 	public GameObject next;
 	public Animator sprite;
+	public SpriteRenderer renderer;
+	public int character;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +15,19 @@ public class HabitantMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		sprite.SetInteger ("Caracter", character);
+
+		if (character == 1)
+			this.gameObject.tag = "Jaleco";
+
+
+
+//		if (Input.GetKeyDown (KeyCode.M))
+//			sprite.SetInteger ("Caracter", 1);
+//
+//		if (Input.GetKeyDown (KeyCode.K))
+//			sprite.SetInteger ("Caracter", 0);
 
 //		this.transform.position = Vector3.MoveTowards(transform.position, next.transform.position, Time.deltaTime * speed);
 //

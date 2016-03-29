@@ -496,6 +496,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 		void FixedUpdate(){
 
+			//TryMoveInDeltaPos (new Vector2(Input.GetAxis ("Horizontal"),-Input.GetAxis ("Vertical")));
+
 			Sprite.sortingOrder = (int)TilePosition.y - (int)TilePosition.x;
 
 			if (CurrentState == ETileObjectState.Building) {
@@ -513,6 +515,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 					CurrentState = ETileObjectState.Placed;
 
 			}
+
+
 
 
 		}
