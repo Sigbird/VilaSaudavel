@@ -44,6 +44,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		/////////////////////////////////////////////////
 		public TileMapData WorldMap;
 
+		public TileMapInputController controller;
+
 
 
 
@@ -366,7 +368,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 					TilePosition = LastPlacedPosition;
 				}
 			}
-
+			TileMapInputController.movingbuilding = false;
 			SetMoving (false);
 			CurrentState = ETileObjectState.Placed;
 		}
@@ -380,7 +382,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		public void FinishPlacement()
 		{
 			Sprite.color = Color.white;
-
+			TileMapInputController.movingbuilding = false;
 			if (CurrentState == ETileObjectState.Moving) {
 
 				if (!WorldMap.CanPlaceObject(GetTileRect()))
@@ -440,8 +442,10 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 				CurrentState = newState;
 
 			if (CurrentState != ETileObjectState.Moving) {
+
 				SetMoving(false);
 			} else {
+
 				SetMoving(true);
 			}
 		}
@@ -474,7 +478,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 		// Use this for initialization
 		void Start () {
-
+			TileMapInputController.movingbuilding = true;
 			if (WorldMap == null)
 				WorldMap = TileUtils.WorldMap;
 
@@ -496,18 +500,68 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 		void FixedUpdate(){
 
-			//TryMoveInDeltaPos (new Vector2(Input.GetAxis ("Horizontal"),-Input.GetAxis ("Vertical")));
+
+
+
 
 			Sprite.sortingOrder = (int)TilePosition.y - (int)TilePosition.x;
-
+			//CONSTRUINDO
 			if (CurrentState == ETileObjectState.Building) {
 				Sprite.renderer.enabled = false;
-
+			
+				//PRONTA
 			} else if (CurrentState == ETileObjectState.Placed) {
-				StartCoroutine("building");
+
+				StartCoroutine ("building");
 				//Anim.SetBool("Build",false);
 				//Sprite.renderer.enabled = true;
+				//MOVENDO
+			} else if (CurrentState == ETileObjectState.Moving) {
+
+				//TryMoveInDeltaPos (new Vector2(Input.GetAxis ("Horizontal"),-Input.GetAxis ("Vertical")));
+			
+				float pointer_x = Input.GetAxis ("Mouse X");
+				float pointer_y = Input.GetAxis ("Mouse Y");
+
+				if (Input.GetMouseButton(0)){
+
+				Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+				RaycastHit info;
+				Physics.Raycast(r, out info, Mathf.Infinity);
+
+
+				if ( info.collider != null) {
+
+					//Debug.Log(info.collider.tag);
+//					if (info.collider.tag == "ObjMovingButton")
+//					{
+//
+//						pointer_x = Input.touches [0].deltaPosition.x;
+//					
+//						pointer_y = Input.touches [0].deltaPosition.y;
+//
+//						TryMoveInDeltaPos (new Vector2 (pointer_x * 0.025f, pointer_y * -0.025f));
+//					
+//					}
+					if (info.collider.tag == "ObjMovingButtonUp")
+						TryMoveInX(1);
+
+					if (info.collider.tag == "ObjMovingButtonDown")
+						TryMoveInX(-1);
+
+					if (info.collider.tag == "ObjMovingButtonLeft")
+						TryMoveInY(-1);
+
+					if (info.collider.tag == "ObjMovingButtonRight")
+						TryMoveInY(1);
+
+				}
+				}
+
+			} else {
+
 			}
+
 
 			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Habitant")) {
 			

@@ -51,6 +51,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 		private TileObject selectedObject;
 
+		public static bool movingbuilding;
+
 		private void ClearSelected()
 		{
 			if (selectedObject != null) {
@@ -310,7 +312,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				
 				if (info.collider != null)
 				{
-					Debug.Log (info.collider.tag);
+					//Debug.Log (info.collider.tag);
 					if (info.collider.tag == "WorldMap")
 					{
 						Vector3 p = info.point - desloc;
@@ -737,7 +739,12 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		
 		// Update is called once per frame
 		void Update () {
-			UpdateInputType ();
+			if (!movingbuilding) {
+				UpdateInputType ();
+			} 
+
+			if(Input.GetKeyDown(KeyCode.A))
+			   movingbuilding = true;
 		}
 
 	}

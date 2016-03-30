@@ -66,7 +66,10 @@ public class Manager : MonoBehaviour {
 			StartCoroutine("estanciar");
 			break;
 		case 2:
-			StartCoroutine("estanciardr");
+			StartCoroutine("estanciarAgente");
+			break;
+		case 3:
+			StartCoroutine("estanciarDr");
 			break;
 		default:
 			//nada
@@ -76,22 +79,34 @@ public class Manager : MonoBehaviour {
 		}
 
 	IEnumerator estanciar(){
-		Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		A.GetComponent<HabitantMovement> ().character = 0;
 		MaxPop = MaxPop + 5;
 		Pop = Pop + 5;
 		yield return new WaitForSeconds (2f);
-		Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		A = (GameObject) Instantiate  (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		A.GetComponent<HabitantMovement> ().character = 2;
 		MaxPop = MaxPop + 5;
 		Pop = Pop + 5;
 	}
 
-	IEnumerator estanciardr(){
+	IEnumerator estanciarAgente(){
 		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 1;
 		Health = Health + 5;
 		yield return new WaitForSeconds (2f);
 		A = (GameObject) Instantiate  (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 1;
+		Health = Health + 5;	
+	}
+
+	IEnumerator estanciarDr(){
+		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		A.GetComponent<HabitantMovement> ().character = 3;
+		Health = Health + 5;
+		yield return new WaitForSeconds (2f);
+		A = (GameObject) Instantiate  (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+		A.GetComponent<HabitantMovement> ().character = 3;
 		Health = Health + 5;	
 	}
 
