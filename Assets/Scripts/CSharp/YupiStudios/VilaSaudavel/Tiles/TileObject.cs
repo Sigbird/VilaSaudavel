@@ -178,7 +178,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 
 		private bool wasInitialized = false;
-
+		private bool corout = false;
 		
 
 		/// <summary>
@@ -478,6 +478,9 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 		// Use this for initialization
 		void Start () {
+
+
+
 			TileMapInputController.movingbuilding = true;
 			if (WorldMap == null)
 				WorldMap = TileUtils.WorldMap;
@@ -489,7 +492,9 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			LastPlacedPosition = TileUtils.TILE_NULL_POSITION;
 
 			if (CurrentState == ETileObjectState.Fixed) {
+
 				SetObjectToMap();
+
 			} else if (CurrentState == ETileObjectState.Placed)
 			{
 				SetObjectToMap();
@@ -510,9 +515,12 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 				Sprite.renderer.enabled = false;
 			
 				//PRONTA
-			} else if (CurrentState == ETileObjectState.Placed) {
+			} else if (CurrentState == ETileObjectState.Placed && !corout) {
 
+				corout = true;
 				StartCoroutine ("building");
+
+
 				//Anim.SetBool("Build",false);
 				//Sprite.renderer.enabled = true;
 				//MOVENDO
@@ -565,9 +573,10 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Habitant")) {
 			
-			if(x != null && Vector3.Distance(x.transform.position, transform.position)< 2)
+				if (x != null && Vector3.Distance (x.transform.position, transform.position) < 2 && CurrentState != ETileObjectState.Moving){
 					CurrentState = ETileObjectState.Placed;
 
+			}
 			}
 
 
@@ -579,6 +588,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			Anim.SetBool("Build",false);
 			yield return new WaitForSeconds(1);
 			Sprite.renderer.enabled = true;
+			Events.DialogSequence = 2;
 		}
 
 

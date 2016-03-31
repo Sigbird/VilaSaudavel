@@ -8,6 +8,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 		public bool contaminada;
 		public float percentage;
+		public int saude;
 		private bool month;
 		private float timer;
 		private float monthcont;
@@ -30,15 +31,16 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 		void Update(){
 
-
 			this.percentage = Manager.Pop;
+
+			if(tileObject.CurrentState == TileObject.ETileObjectState.Placed){
 
 			timer = timer + Time.deltaTime;
 
 			if (timer >= 5) {
 				monthcont++;
-				if(this.buildingType == EBuildingType.SimpleHouse && tileObject.CurrentState == TileObject.ETileObjectState.Placed){
-					Teste();
+				if (this.buildingType == EBuildingType.SimpleHouse) {
+					Teste ();
 				}
 				timer = 0;
 			}
@@ -49,15 +51,17 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 			}
 
 			if (this.buildingType == EBuildingType.SimpleHouse && this.month == true) {
-				notifications.SetTrigger("Paying");
-				if(this.contaminada == true){
-				Manager.Cash = Manager.Cash + 60;
-				}else{
-				Manager.Cash = Manager.Cash + 120;
+				notifications.SetTrigger ("Paying");
+				if (this.contaminada == true) {
+					Manager.Cash = Manager.Cash + 60;
+				} else {
+					Manager.Cash = Manager.Cash + 120;
 				}
 				this.month = false;
 				// roda animaçao de dinheiro
 			}
+
+		}
 
 			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Jaleco")) {
 				
@@ -74,7 +78,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		public void Teste(){
 			
 			float x = Random.value;
-			
+			this.saude = 100 - (int)percentage ;
 			if (x <= percentage / 100 && this.contaminada == false) {
 				//Debug.Log ("contaminou");
 				notifications.SetBool("Sick", true);
