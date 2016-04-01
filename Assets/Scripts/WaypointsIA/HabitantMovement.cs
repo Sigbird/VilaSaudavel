@@ -8,6 +8,12 @@ public class HabitantMovement : MonoBehaviour {
 	public SpriteRenderer renderer;
 	public int character;
 
+	//Statistics
+	public int healt;
+	public int age;
+	public string name;
+	public string info;
+
 	// Use this for initialization
 	void Start () {
 		next = GameObject.Find ("WayPoint");
@@ -18,8 +24,35 @@ public class HabitantMovement : MonoBehaviour {
 
 		sprite.SetInteger ("Caracter", character);
 
-		if (character == 1)
+		if (character == 1) {
 			this.gameObject.tag = "Jaleco";
+			this.name = "Rebeca";
+			this.age = 20;
+			this.healt = 100;
+			this.info = "Agente de Saude";
+		}
+
+		if (character == 3) {
+
+			this.name = "Jaleco";
+			this.age = 30;
+			this.healt = 100;
+			this.info = "Doutor Jaleco";
+		}
+		if (character == 2) {
+			
+			this.name = "Vanessa";
+			this.age = 20;
+			this.healt = 100;
+			this.info = "Cidada de vila Saudavel";
+		}
+		if (character == 0) {
+			
+			this.name = "Tony";
+			this.age = 20;
+			this.healt = 100;
+			this.info = "Cidadao de vila Saudavel";
+		}
 
 
 

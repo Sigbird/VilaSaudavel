@@ -120,6 +120,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		/////////////////////////////////////////////////
 		public GameObject SelectionGUI;
 
+		public YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo BuildingInfo;
+
 
 
 		/////////////////////////////////////////////////
@@ -390,7 +392,21 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 					CancelPlacement();
 				} else 
 				{
-					SetObjectToMap();
+					if(BuildingInfo.buildingType == YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo.EBuildingType.SimpleHouse){
+						Manager.Cash = Manager.Cash - 20;
+						SetObjectToMap();
+					}
+
+					if(BuildingInfo.buildingType == YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo.EBuildingType.HealthCenter){
+						Manager.Cash = Manager.Cash - 50;
+						SetObjectToMap();
+					}
+
+					if(BuildingInfo.buildingType == YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo.EBuildingType.Hospital){
+						Manager.Cash = Manager.Cash - 100;
+						SetObjectToMap();
+					}
+
 				}
 
 			}

@@ -8,11 +8,17 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 		public bool contaminada;
 		public float percentage;
-		public int saude;
+
 		private bool month;
 		private float timer;
 		private float monthcont;
 		public Animator notifications;
+
+		//ESTATISTICAS
+		public int saude;
+		public int renda;
+		public string descriçao;
+		public string info;
 
 
 
@@ -33,35 +39,58 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 			this.percentage = Manager.Pop;
 
-			if(tileObject.CurrentState == TileObject.ETileObjectState.Placed){
+			if (tileObject.CurrentState == TileObject.ETileObjectState.Placed) {
 
-			timer = timer + Time.deltaTime;
+				timer = timer + Time.deltaTime;
 
-			if (timer >= 5) {
-				monthcont++;
-				if (this.buildingType == EBuildingType.SimpleHouse) {
-					Teste ();
+				if (timer >= 5) {
+					monthcont++;
+					if (this.buildingType == EBuildingType.SimpleHouse) {
+						Teste ();
+					}
+					timer = 0;
 				}
-				timer = 0;
-			}
 			
-			if (monthcont >= 30) {
-				monthcont = 0;
-				month = true;
-			}
-
-			if (this.buildingType == EBuildingType.SimpleHouse && this.month == true) {
-				notifications.SetTrigger ("Paying");
-				if (this.contaminada == true) {
-					Manager.Cash = Manager.Cash + 60;
-				} else {
-					Manager.Cash = Manager.Cash + 120;
+				if (monthcont >= 30) {
+					monthcont = 0;
+					month = true;
 				}
-				this.month = false;
-				// roda animaçao de dinheiro
-			}
 
-		}
+				if (this.buildingType == EBuildingType.SimpleHouse && this.month == true) {
+					notifications.SetTrigger ("Paying");
+					if (this.contaminada == true) {
+						Manager.Cash = Manager.Cash + 60;
+					} else {
+						Manager.Cash = Manager.Cash + 120;
+					}
+					this.month = false;
+					// roda animaçao de dinheiro
+				}
+
+			}
+				
+
+
+			if ( this.buildingType == EBuildingType.HealthCenter){
+						this.renda = 0;
+						this.saude = (int)Manager.Health;
+						this.descriçao = "Posto de Saude";
+						this.info = "Gera agentes de Saude";
+				}else if( this.buildingType == EBuildingType.Hospital){
+						this.renda = 0;
+						this.saude = (int)Manager.Health;
+						this.descriçao = "Hospital";
+						this.info = "Trata Pacientes";
+					}else if ( this.buildingType == EBuildingType.SimpleHouse){
+						this.renda = 120;
+						this.saude = (int)Manager.Health;
+						this.descriçao = "Casa";
+						this.info = "Moradia Basica";
+					}
+
+
+
+		
 
 			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Jaleco")) {
 				
@@ -73,8 +102,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				
 			}
 
+		
 		}
-
 		public void Teste(){
 			
 			float x = Random.value;
