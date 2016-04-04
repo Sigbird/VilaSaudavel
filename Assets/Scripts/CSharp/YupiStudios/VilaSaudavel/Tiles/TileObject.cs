@@ -604,7 +604,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			Anim.SetBool("Build",false);
 			yield return new WaitForSeconds(1);
 			Sprite.renderer.enabled = true;
-			Events.DialogSequence = 2;
+
 		}
 
 

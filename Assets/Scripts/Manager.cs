@@ -26,6 +26,12 @@ public class Manager : MonoBehaviour {
 
 	public GameObject RespawnHabitant;
 
+	public Text StatisticCoins;
+
+	public Text StatisticCoinsGoal;
+
+	public Text StatisticCoinsMount;
+
 	// Use this for initialization
 	void Start () {
 		Cash = 100;
@@ -56,6 +62,18 @@ public class Manager : MonoBehaviour {
 		HealthText.text = Health + "/" + MaxHealth;
 
 		GameObject.Find ("Money_text").GetComponent<Text> ().text = Cash.ToString();
+
+		if (GameObject.Find ("StatisticCash") != null)
+			GameObject.Find ("StatisticCash").GetComponent<Text> ().text = Cash.ToString ();
+
+		if (GameObject.Find ("StatisticCashGoal") != null)
+			GameObject.Find ("StatisticCashGoal").GetComponent<Text> ().text = "1000";
+
+		if (GameObject.Find ("StatisticCashTitle") != null)
+			GameObject.Find ("StatisticCashTitle").GetComponent<Text> ().text = "A Vila gera " + ((Pop/10)*120).ToString() + " moedas por mês";
+
+		if (GameObject.Find ("StatisticHealt") != null)
+			GameObject.Find ("StatisticHealt").GetComponent<Text> ().text = "A Vila possui" + Health.ToString() + " de Saude";
 
 	}
 

@@ -19,6 +19,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		public int renda;
 		public string descriçao;
 		public string info;
+		public Sprite ilustracao;
 
 
 

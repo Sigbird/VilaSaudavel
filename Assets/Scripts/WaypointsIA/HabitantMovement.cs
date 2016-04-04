@@ -13,10 +13,16 @@ public class HabitantMovement : MonoBehaviour {
 	public int age;
 	public string name;
 	public string info;
+	public Sprite ilustracao;
+	public Sprite Sprite0;
+	public Sprite Sprite1;
+	public Sprite Sprite2;
+	public Sprite Sprite3;
 
 	// Use this for initialization
 	void Start () {
 		next = GameObject.Find ("WayPoint");
+		Events.DialogSequence = 2;
 	}
 	
 	// Update is called once per frame
@@ -30,6 +36,8 @@ public class HabitantMovement : MonoBehaviour {
 			this.age = 20;
 			this.healt = 100;
 			this.info = "Agente de Saude";
+			this.ilustracao = Sprite1;
+
 		}
 
 		if (character == 3) {
@@ -38,6 +46,7 @@ public class HabitantMovement : MonoBehaviour {
 			this.age = 30;
 			this.healt = 100;
 			this.info = "Doutor Jaleco";
+			this.ilustracao = Sprite3;
 		}
 		if (character == 2) {
 			
@@ -45,6 +54,7 @@ public class HabitantMovement : MonoBehaviour {
 			this.age = 20;
 			this.healt = 100;
 			this.info = "Cidada de vila Saudavel";
+			this.ilustracao = Sprite2;
 		}
 		if (character == 0) {
 			
@@ -52,6 +62,7 @@ public class HabitantMovement : MonoBehaviour {
 			this.age = 20;
 			this.healt = 100;
 			this.info = "Cidadao de vila Saudavel";
+			this.ilustracao = Sprite0;
 		}
 
 

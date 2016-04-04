@@ -9,6 +9,10 @@ public class Events : MonoBehaviour {
 	public GameObject TextDialog;
 	public static int DialogSequence;
 	public GameObject Hand;
+	public Sprite Image;
+
+	public GameObject House2;
+	public GameObject House3;
 
 	// Use this for initialization
 	void Start () {
@@ -28,12 +32,20 @@ public class Events : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+//		Debug.Log(Hand.GetComponent<Animator>().GetInteger("TutorialID"));
 		if (first_time) {
-			if(DialogSequence == 0)
+			if(DialogSequence == 0){
 				StartDialog("Ola! Bem vindo a vila saudavel! Comece sua vila construindo com a ferramenta a esquerda.", Screen.height/2, Screen.width/2 - 400);
-
-			if(DialogSequence == 2)
+				Tutorial(1);
+				House2.GetComponent<Button>().interactable = false;
+				House3.GetComponent<Button>().interactable = false;
+			}
+			if(DialogSequence == 2){
 				StartDialog("Muito Bem! Agora moradores estao chegando a sua vila!", -100, -100);
+				House2.GetComponent<Button>().interactable = true;
+				House3.GetComponent<Button>().interactable = true;
+				first_time = false;
+			}
 		}
 
 		if(DialogSequence == 3)
@@ -55,12 +67,27 @@ public class Events : MonoBehaviour {
 		}
 	}
 
+	public void Tutorial(int x){
+	
+		if (first_time) {
+			Hand.GetComponent<Animator>().SetInteger("TutorialID", x );
+		}
+
+	}
+
 	public void StartDialog(string text, int x, int y){
 		Time.timeScale = 0;
 		DialogText.SetActive(true);
 		TextDialog.GetComponent<Text> ().text = text;
-		Hand.transform.position = new Vector3 (x, y, 0);
+	//	Hand.transform.position = new Vector3 (x, y, 0);
 		DialogSequence = -1;
+	}
+
+	public void PlayDialog(string text){
+		Time.timeScale = 0;
+		DialogText.SetActive(true);
+		TextDialog.GetComponent<Text> ().text = text;
+		//	Hand.transform.position = new Vector3 (x, y, 0);
 	}
 
 	public void StartDialog2(GameObject House){
@@ -71,6 +98,7 @@ public class Events : MonoBehaviour {
 			DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().saude;
 			DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
 			DialogText2.GetComponent<DialogInfoPanel> ().Info.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
+			DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
 			DialogText2.SetActive(true);
 		}
 		if (House.tag == "Habitant" || House.tag == "Jaleco" ) {
@@ -79,6 +107,7 @@ public class Events : MonoBehaviour {
 			DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + House.GetComponent<HabitantMovement>().healt;
 			DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = House.GetComponent<HabitantMovement>().name;
 			DialogText2.GetComponent<DialogInfoPanel> ().Info.text = House.GetComponent<HabitantMovement>().info;
+			DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<HabitantMovement>().ilustracao;
 			DialogText2.SetActive(true);
 		}
 			//DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.
