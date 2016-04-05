@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0e0e7cb445ed1a942b7c7f448d2a5442
+guid: 88a78f1b05f5f6b4da7a09456417a8dc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hospital_spritesheet_0
-    21300002: hospital_spritesheet_1
-    21300004: hospital_spritesheet_2
-    21300006: hospital_spritesheet_3
+    21300000: healthPost_spritesheet (1)_0
+    21300002: healthPost_spritesheet (1)_1
+    21300004: healthPost_spritesheet (1)_2
+    21300006: healthPost_spritesheet (1)_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,7 +47,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: hospital_spritesheet_0
+    - name: healthPost_spritesheet (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -57,7 +57,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hospital_spritesheet_1
+    - name: healthPost_spritesheet (1)_1
       rect:
         serializedVersion: 2
         x: 512
@@ -67,7 +67,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hospital_spritesheet_2
+    - name: healthPost_spritesheet (1)_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -77,7 +77,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hospital_spritesheet_3
+    - name: healthPost_spritesheet (1)_3
       rect:
         serializedVersion: 2
         x: 1536

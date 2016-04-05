@@ -5,8 +5,11 @@ public class HabitantMovement : MonoBehaviour {
 	public float speed;
 	public GameObject next;
 	public Animator sprite;
+	public Animator notifications;
 	public SpriteRenderer renderer;
 	public int character;
+	private float timer;
+	public float percentage;
 
 	//Statistics
 	public int healt;
@@ -14,6 +17,7 @@ public class HabitantMovement : MonoBehaviour {
 	public string name;
 	public string info;
 	public Sprite ilustracao;
+	public bool contaminado;
 	public Sprite Sprite0;
 	public Sprite Sprite1;
 	public Sprite Sprite2;
@@ -23,10 +27,22 @@ public class HabitantMovement : MonoBehaviour {
 	void Start () {
 		next = GameObject.Find ("WayPoint");
 		Events.DialogSequence = 2;
+		this.healt = 100;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
+		timer = timer + Time.deltaTime;
+		
+		if (timer >= 5) {
+
+			if (this.character == 0 || this.character == 2) {
+				Teste ();
+			}
+			timer = 0;
+		}
 
 		sprite.SetInteger ("Caracter", character);
 
@@ -34,7 +50,6 @@ public class HabitantMovement : MonoBehaviour {
 			this.gameObject.tag = "Jaleco";
 			this.name = "Rebeca";
 			this.age = 20;
-			this.healt = 100;
 			this.info = "Agente de Saude";
 			this.ilustracao = Sprite1;
 
@@ -44,7 +59,6 @@ public class HabitantMovement : MonoBehaviour {
 
 			this.name = "Jaleco";
 			this.age = 30;
-			this.healt = 100;
 			this.info = "Doutor Jaleco";
 			this.ilustracao = Sprite3;
 		}
@@ -52,7 +66,6 @@ public class HabitantMovement : MonoBehaviour {
 			
 			this.name = "Vanessa";
 			this.age = 20;
-			this.healt = 100;
 			this.info = "Cidada de vila Saudavel";
 			this.ilustracao = Sprite2;
 		}
@@ -60,12 +73,14 @@ public class HabitantMovement : MonoBehaviour {
 			
 			this.name = "Tony";
 			this.age = 20;
-			this.healt = 100;
 			this.info = "Cidadao de vila Saudavel";
 			this.ilustracao = Sprite0;
 		}
 
-
+		if (TimerScript.month == true) {
+			this.percentage = this.percentage + 10;
+			TimerScript.month = false;
+		}
 
 //		if (Input.GetKeyDown (KeyCode.M))
 //			sprite.SetInteger ("Caracter", 1);
@@ -84,6 +99,22 @@ public class HabitantMovement : MonoBehaviour {
 		sprite.SetFloat ("Speedx", rigidbody.velocity.x);
 		sprite.SetFloat ("Speedy", rigidbody.velocity.z);
 	}
+
+	public void Teste(){
+		
+		float x = Random.value;
+		this.healt = 100 - (int)percentage ;
+		if (x <= percentage / 100 && this.contaminado == false) {
+			//Debug.Log ("contaminou");
+			notifications.SetBool("Exclamation", true);
+
+			//GameObject.Find ("Main Camera").GetComponent<Teste> ().infeccão++;
+			this.contaminado = true;
+		}
+		
+	}
+
+
 
 	void FollowTargetWitouthRotation(GameObject target, float distanceToStop, float speed)
 	{

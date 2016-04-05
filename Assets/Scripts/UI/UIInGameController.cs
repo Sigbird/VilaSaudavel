@@ -225,6 +225,12 @@ public class UIInGameController : MonoBehaviour {
 	}
 
 
+	public void ChangeVolume(float x){
+	
+		AudioListener.volume = x;
+
+	}
+
 	public void ChangeSprite(GameObject obj){
 
 	}

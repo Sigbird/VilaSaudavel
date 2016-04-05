@@ -32,6 +32,7 @@ public class Manager : MonoBehaviour {
 
 	public Text StatisticCoinsMount;
 
+
 	// Use this for initialization
 	void Start () {
 		Cash = 100;
@@ -63,6 +64,9 @@ public class Manager : MonoBehaviour {
 
 		GameObject.Find ("Money_text").GetComponent<Text> ().text = Cash.ToString();
 
+		if (GameObject.Find ("VolumeSlider") != null)
+			AudioListener.volume = GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value;
+
 		if (GameObject.Find ("StatisticCash") != null)
 			GameObject.Find ("StatisticCash").GetComponent<Text> ().text = Cash.ToString ();
 
@@ -73,9 +77,46 @@ public class Manager : MonoBehaviour {
 			GameObject.Find ("StatisticCashTitle").GetComponent<Text> ().text = "A Vila gera " + ((Pop/10)*120).ToString() + " moedas por mês";
 
 		if (GameObject.Find ("StatisticHealt") != null)
-			GameObject.Find ("StatisticHealt").GetComponent<Text> ().text = "A Vila possui" + Health.ToString() + " de Saude";
+			GameObject.Find ("StatisticHealt").GetComponent<Text> ().text = "A Vila possui " + Health.ToString() + " de Saude";
 
 	}
+
+//	public void Testar(){
+//		GameObject[] listacasas;
+//		if (GameObject.FindGameObjectsWithTag ("Building") != null) {
+//			listacasas = GameObject.FindGameObjectsWithTag ("Building");
+//			if (GameObject.Find ("BuildingDetails1") != null) {
+//				GameObject.Find ("BuildingDetails1").GetComponent<DialogInfoPanel> ().Renda.text = listacasas [1].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda.ToString ();
+//				GameObject.Find ("BuildingDetails1").GetComponent<DialogInfoPanel> ().Descricao.text = listacasas [1].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+//				GameObject.Find ("BuildingDetails1").GetComponent<DialogInfoPanel> ().ilustracao.sprite = listacasas [1].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+//			}
+//			if (GameObject.Find ("BuildingDetails2") != null) {
+//				GameObject.Find ("BuildingDetails2").GetComponent<DialogInfoPanel> ().Renda.text = listacasas [2].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda.ToString ();
+//				GameObject.Find ("BuildingDetails2").GetComponent<DialogInfoPanel> ().Descricao.text = listacasas [2].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+//				GameObject.Find ("BuildingDetails2").GetComponent<DialogInfoPanel> ().ilustracao.sprite = listacasas [2].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+//			}
+//			if (GameObject.Find ("BuildingDetails3") != null) {
+//				GameObject.Find ("BuildingDetails3").GetComponent<DialogInfoPanel> ().Renda.text = listacasas [3].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda.ToString ();
+//				GameObject.Find ("BuildingDetails3").GetComponent<DialogInfoPanel> ().Descricao.text = listacasas [3].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+//				GameObject.Find ("BuildingDetails3").GetComponent<DialogInfoPanel> ().ilustracao.sprite = listacasas [3].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+//			}
+//			if (GameObject.Find ("BuildingDetails4") != null) {
+//				GameObject.Find ("BuildingDetails4").GetComponent<DialogInfoPanel> ().Renda.text = listacasas [4].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda.ToString ();
+//				GameObject.Find ("BuildingDetails4").GetComponent<DialogInfoPanel> ().Descricao.text = listacasas [4].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+//				GameObject.Find ("BuildingDetails4").GetComponent<DialogInfoPanel> ().ilustracao.sprite = listacasas [4].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+//			}
+//			if (GameObject.Find ("BuildingDetails5") != null) {
+//				GameObject.Find ("BuildingDetails5").GetComponent<DialogInfoPanel> ().Renda.text = listacasas [5].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda.ToString ();
+//				GameObject.Find ("BuildingDetails5").GetComponent<DialogInfoPanel> ().Descricao.text = listacasas [5].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+//				GameObject.Find ("BuildingDetails5").GetComponent<DialogInfoPanel> ().ilustracao.sprite = listacasas [5].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+//			}
+//			if (GameObject.Find ("BuildingDetails6") != null) {
+//				GameObject.Find ("BuildingDetails6").GetComponent<DialogInfoPanel> ().Renda.text = listacasas [6].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda.ToString ();
+//				GameObject.Find ("BuildingDetails6").GetComponent<DialogInfoPanel> ().Descricao.text = listacasas [6].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+//				GameObject.Find ("BuildingDetails6").GetComponent<DialogInfoPanel> ().ilustracao.sprite = listacasas [6].GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+//			}
+//		}
+//	}
 
 	public void InstantiateHabitant(int i){
 

@@ -136,6 +136,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		// Animador do Objeto
 		/////////////////////////////////////////////////
 		public Animator Anim;
+		public Animator Smoke;
 
 
 
@@ -601,8 +602,12 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		}
 
 		IEnumerator building(){
+
+
+			Smoke.SetTrigger ("SmokeOn");
+			yield return new WaitForSeconds(0.1f);
 			Anim.SetBool("Build",false);
-			yield return new WaitForSeconds(1);
+			yield return new WaitForSeconds(0.5f);
 			Sprite.renderer.enabled = true;
 
 		}
