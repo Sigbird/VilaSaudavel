@@ -77,10 +77,10 @@ public class HabitantMovement : MonoBehaviour {
 			this.ilustracao = Sprite0;
 		}
 
-		if (TimerScript.month == true) {
-			this.percentage = this.percentage + 10;
-			TimerScript.month = false;
-		}
+//		if (TimerScript.month == true) {
+//			this.percentage = this.percentage + 10;
+//			TimerScript.month = false;
+//		}
 
 //		if (Input.GetKeyDown (KeyCode.M))
 //			sprite.SetInteger ("Caracter", 1);

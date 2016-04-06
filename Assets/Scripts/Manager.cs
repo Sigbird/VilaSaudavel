@@ -152,11 +152,12 @@ public class Manager : MonoBehaviour {
 	IEnumerator estanciarAgente(){
 		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 1;
-		Health = Health + 5;
-		yield return new WaitForSeconds (2f);
-		A = (GameObject) Instantiate  (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
-		A.GetComponent<HabitantMovement> ().character = 1;
-		Health = Health + 5;	
+		Health = Health + 10;
+		yield return new WaitForSeconds (1f);
+		Events.DialogSequence = 4;
+//		A = (GameObject) Instantiate  (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
+//		A.GetComponent<HabitantMovement> ().character = 1;
+//		Health = Health + 5;	
 	}
 
 	IEnumerator estanciarDr(){
