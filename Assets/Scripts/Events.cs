@@ -6,6 +6,7 @@ public class Events : MonoBehaviour {
 	private static bool first_time;
 	private static bool first_time_agent;
 	private static bool first_time_dengue;
+	public bool examin;
 	public bool contamination;
 	public GameObject DialogText;
 	public GameObject DialogText2;
@@ -91,7 +92,7 @@ public class Events : MonoBehaviour {
 
 		}
 
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && examin == true) {
 			Ray r = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit info;
 			Physics.Raycast (r, out info, Mathf.Infinity);
@@ -163,6 +164,10 @@ public class Events : MonoBehaviour {
 		DialogText.SetActive(false);
 		DialogText2.SetActive(false);
 		Hand.transform.position = new Vector3 (-100, -100, 0);
+	}
+
+	public void SetExamin(bool x){
+		this.examin = x;
 	}
 
 	IEnumerator WaitFade(){

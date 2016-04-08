@@ -18,6 +18,7 @@ public class HabitantMovement : MonoBehaviour {
 	public string info;
 	public Sprite ilustracao;
 	public bool contaminado;
+	private bool contaminadocd;
 	public Sprite Sprite0;
 	public Sprite Sprite1;
 	public Sprite Sprite2;
@@ -28,11 +29,16 @@ public class HabitantMovement : MonoBehaviour {
 		next = GameObject.Find ("WayPoint");
 		Events.DialogSequence = 2;
 		this.healt = 100;
+		contaminadocd = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		if (contaminado == true && contaminadocd == true) {
+			StartCoroutine("Sickness");
+			contaminadocd = false;
+		}
 
 		timer = timer + Time.deltaTime;
 		
@@ -114,7 +120,17 @@ public class HabitantMovement : MonoBehaviour {
 		
 	}
 
+	IEnumerator Sickness(){
+		if (contaminado) {
+			renderer.color = Color.magenta;
+			yield return new WaitForSeconds (1);
+			renderer.color = Color.white;
+			yield return new WaitForSeconds (1);
+			StartCoroutine("Sickness");
+		} 
 
+	
+	}
 
 	void FollowTargetWitouthRotation(GameObject target, float distanceToStop, float speed)
 	{
