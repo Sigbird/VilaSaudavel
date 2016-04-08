@@ -12,6 +12,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		private bool month;
 		private float timer;
 		private float monthcont;
+		public SpriteRenderer renderer;
 		public Animator notifications;
 
 		//ESTATISTICAS
@@ -116,6 +117,18 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				//GameObject.Find ("Main Camera").GetComponent<Teste> ().infeccão++;
 				this.contaminada = true;
 			}
+			
+		}
+
+		IEnumerator Sickness(){
+			if (contaminada) {
+				renderer.color = Color.magenta;
+				yield return new WaitForSeconds (1);
+				renderer.color = Color.white;
+				yield return new WaitForSeconds (1);
+				StartCoroutine("Sickness");
+			} 
+			
 			
 		}
 

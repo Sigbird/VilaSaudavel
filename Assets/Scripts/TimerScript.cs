@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour {
-	private float timercount;
+	public static float timercount;
 	private int monthcount;
 	public int days;
 	public static bool month;
@@ -19,6 +19,7 @@ public class TimerScript : MonoBehaviour {
 		timercount = timercount + Time.deltaTime;
 
 		if (timercount >= 5) {
+			Events.birds = true;
 			days--;
 			monthcount++;
 			timercount = 0;

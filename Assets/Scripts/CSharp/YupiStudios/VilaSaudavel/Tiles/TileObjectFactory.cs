@@ -40,7 +40,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			Vector2 position = tileInputController.GetHighlightPosition ();
 
 			if (Vector3.Distance(position,new Vector2 (-1,-1)) <=1 ) {
-				position = new Vector2 (10,10);
+				position = new Vector2 (31,30);
 			}
 
 			//Debug.Log (position);

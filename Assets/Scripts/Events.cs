@@ -6,6 +6,7 @@ public class Events : MonoBehaviour {
 	private static bool first_time;
 	private static bool first_time_agent;
 	private static bool first_time_dengue;
+	public static bool birds;
 	public bool examin;
 	public bool contamination;
 	public GameObject DialogText;
@@ -21,6 +22,7 @@ public class Events : MonoBehaviour {
 
 	public GameObject House2;
 	public GameObject House3;
+	public GameObject Revoada;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +44,12 @@ public class Events : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		if(birds == true){
+			TesteRevoada();
+			birds = false;
+		}
+
 //		Debug.Log(Hand.GetComponent<Animator>().GetInteger("TutorialID"));
 		if (first_time) {
 			if(DialogSequence == 0){
@@ -165,6 +173,16 @@ public class Events : MonoBehaviour {
 		DialogText2.SetActive(false);
 		Hand.transform.position = new Vector3 (-100, -100, 0);
 	}
+
+	public void TesteRevoada(){
+		
+		float x = Random.value;
+		if (x <= 0.1f) {
+			Instantiate(Revoada,new Vector3(Random.Range(69,79),0,Random.Range(11,2)),Quaternion.Euler(90,0,0));
+		}
+		
+	}
+
 
 	public void SetExamin(bool x){
 		this.examin = x;
