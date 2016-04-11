@@ -59,6 +59,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				}
 
 				if (this.buildingType == EBuildingType.SimpleHouse && this.month == true) {
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.Payment);
 					notifications.SetTrigger ("Paying");
 					if (this.contaminada == true) {
 						Manager.Cash = Manager.Cash + 60;
@@ -116,6 +117,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				Manager.Pop = Manager.Pop - 5;
 				//GameObject.Find ("Main Camera").GetComponent<Teste> ().infeccão++;
 				this.contaminada = true;
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.Disease);
 			}
 			
 		}

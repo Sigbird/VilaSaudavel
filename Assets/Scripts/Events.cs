@@ -6,7 +6,7 @@ public class Events : MonoBehaviour {
 	private static bool first_time;
 	private static bool first_time_agent;
 	private static bool first_time_dengue;
-	public static bool birds;
+	public static bool creatures;
 	public bool examin;
 	public bool contamination;
 	public GameObject DialogText;
@@ -23,6 +23,8 @@ public class Events : MonoBehaviour {
 	public GameObject House2;
 	public GameObject House3;
 	public GameObject Revoada;
+	public Animator CamController;
+
 
 	// Use this for initialization
 	void Start () {
@@ -45,9 +47,10 @@ public class Events : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if(birds == true){
+		if(creatures == true){
 			TesteRevoada();
-			birds = false;
+			TesteSeaCreature();
+			creatures = false;
 		}
 
 //		Debug.Log(Hand.GetComponent<Animator>().GetInteger("TutorialID"));
@@ -66,6 +69,8 @@ public class Events : MonoBehaviour {
 					GameObject.Find("DialogImage").GetComponent<Image>().sprite = Dr; 
 				}
 				StartDialog("Muito Bem! Agora moradores estao chegando a sua vila!", -100, -100);
+				CamController.enabled = true;
+				CamController.SetTrigger("Entrance");
 				House2.GetComponent<Button>().interactable = true;
 				House3.GetComponent<Button>().interactable = true;
 				first_time = false;
@@ -172,6 +177,7 @@ public class Events : MonoBehaviour {
 		DialogText.SetActive(false);
 		DialogText2.SetActive(false);
 		Hand.transform.position = new Vector3 (-100, -100, 0);
+		CamController.enabled = false;
 	}
 
 	public void TesteRevoada(){
@@ -179,6 +185,17 @@ public class Events : MonoBehaviour {
 		float x = Random.value;
 		if (x <= 0.1f) {
 			Instantiate(Revoada,new Vector3(Random.Range(69,79),0,Random.Range(11,2)),Quaternion.Euler(90,0,0));
+		}
+		
+	}
+
+	public void TesteSeaCreature(){
+		
+		float x = Random.value;
+		if (x <= 0.1f) {
+			foreach(GameObject anim in GameObject.FindGameObjectsWithTag("SeaCreature")){
+				anim.GetComponent<Animator>().SetTrigger("Whale");
+			}
 		}
 		
 	}

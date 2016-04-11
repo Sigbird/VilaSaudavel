@@ -8,6 +8,7 @@ public class TimerScript : MonoBehaviour {
 	public int days;
 	public static bool month;
 	public GameObject TimerUI;
+	public Animator Alert;
 	// Use this for initialization
 	void Start () {
 		days = 120;
@@ -17,9 +18,10 @@ public class TimerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timercount = timercount + Time.deltaTime;
-
+		Alert.SetFloat ("Alert", days);	
+		//Debug.Log (days);
 		if (timercount >= 5) {
-			Events.birds = true;
+			Events.creatures = true;
 			days--;
 			monthcount++;
 			timercount = 0;

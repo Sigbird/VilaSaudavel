@@ -456,7 +456,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateHouse();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 2:
@@ -464,7 +464,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateHealthCenter();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 3:
@@ -472,7 +472,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateHospital ();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 4:
@@ -480,7 +480,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateCondiminio();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 5:
@@ -488,7 +488,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreatePraca ();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 6:
@@ -496,7 +496,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateLixeira ();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 7:
@@ -504,7 +504,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateTratamento ();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 8:
@@ -512,7 +512,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateMercado ();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			case 9:
@@ -520,7 +520,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					UIController.ActiveBuildingOptions();
 					CreateColeta();
 				}else{
-					//no money
+					Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 				}
 				break;
 			default:
@@ -536,7 +536,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (0);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -547,7 +547,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (1);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -558,7 +558,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (2);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -569,7 +569,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (3);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -580,7 +580,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (4);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -591,7 +591,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (5);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -602,7 +602,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (6);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -613,7 +613,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (7);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		
@@ -624,7 +624,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				objectFactory.TryInstantiateObject (8);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
-				//animacao sem dinheiro
+				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
 		

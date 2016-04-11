@@ -21,7 +21,8 @@ public class UIInGameController : MonoBehaviour {
 
 
 	//STATISTICS_UI
-
+	public float gamespeed {get; set;}
+	public float gamevolume {get; set;}
 
 	//BACKGROUND
 	public GameObject buildBG;
@@ -32,7 +33,17 @@ public class UIInGameController : MonoBehaviour {
 
 
 	void Start(){
-		
+		gamespeed = 1;
+		gamevolume = 0.5f;
+	}
+
+	void Update(){
+		Debug.Log (AudioListener.volume);
+		AudioListener.volume = gamevolume;
+
+		if(gamespeed>= 0 && gamespeed <=2)
+			Time.timeScale = gamespeed;
+
 	}
 
     #region BUILDMENU
@@ -225,9 +236,27 @@ public class UIInGameController : MonoBehaviour {
 	}
 
 
+	public void PauseGame(bool x){
+
+		if(x){
+			Time.timeScale = 0;
+		}else{
+			Time.timeScale = 1;
+		}
+
+	}
+
+	public void GameSpeed(float x ){
+		if(x >= 0 && x <=2)
+		Time.timeScale = x;
+
+	}
+
+
+
 	public void ChangeVolume(float x){
 	
-		AudioListener.volume = x;
+		//AudioListener.volume = x;
 
 	}
 
