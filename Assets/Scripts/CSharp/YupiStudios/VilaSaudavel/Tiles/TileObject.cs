@@ -603,7 +603,6 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 		IEnumerator building(){
 
-
 			Smoke.SetTrigger ("SmokeOn");
 			yield return new WaitForSeconds(0.1f);
 			Anim.SetBool("Build",false);
@@ -611,6 +610,17 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			yield return new WaitForSeconds(0.5f);
 			Sprite.renderer.enabled = true;
 
+		}
+
+		IEnumerator destroying(){
+
+			Smoke.SetTrigger ("SmokeOn");
+			yield return new WaitForSeconds(0.1f);
+			Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.Building);
+			yield return new WaitForSeconds(0.5f);
+			Sprite.renderer.enabled = false;
+			 	
+			
 		}
 
 

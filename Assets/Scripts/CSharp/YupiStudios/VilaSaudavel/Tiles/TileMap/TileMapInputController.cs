@@ -318,11 +318,11 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 						Vector3 p = info.point - desloc;
 						Vector2 tile = TileUtils.WorldPosToTile(Data,new Vector3(p.x,0,p.z)); 
 						
-						TileHighlighter.gameObject.SetActive(true);
+						//TileHighlighter.gameObject.SetActive(true);
 						TileHighlighter.TilePos = tile;
 					} else 
 					{
-						TileHighlighter.gameObject.SetActive(true);
+						//TileHighlighter.gameObject.SetActive(true);
 					}
 				}
 				
@@ -360,6 +360,36 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				
 				if (info.collider != null)
 				{
+
+					if (info.collider.tag == "Building")
+					{
+						Vector3 p = info.point - desloc;
+						Vector2 tile = TileUtils.WorldPosToTile(Data,new Vector3(p.x,0,p.z));
+						
+						TileInfo tileInfo = Data.TileMap[(int)tile.y,(int)tile.x];
+						
+						if (tileInfo.Type != TileInfo.ETileType.Blocked)
+						{
+							
+							if (tileInfo.Occupied)
+							{					
+								TileHighlighter.gameObject.SetActive(false);
+								SelectObject(tileInfo.ObjectOwner);
+								return true;
+							} else 
+							{
+								ClearSelected();
+								//TileHighlighter.gameObject.SetActive(true);
+								TileHighlighter.TilePos = tile;
+							}
+							
+						} else 
+						{
+							TileHighlighter.gameObject.SetActive(false);
+						}
+					
+					}
+
 					if (info.collider.tag == "WorldMap")
 					{
 						Vector3 p = info.point - desloc;
@@ -378,7 +408,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 							} else 
 							{
 								ClearSelected();
-								TileHighlighter.gameObject.SetActive(true);
+								//TileHighlighter.gameObject.SetActive(true);
 								TileHighlighter.TilePos = tile;
 							}
 							

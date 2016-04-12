@@ -13,12 +13,14 @@ public class Events : MonoBehaviour {
 	public GameObject DialogText2;
 	public GameObject TextDialog;
 	public static int DialogSequence;
+	public static int FaseControler;
 	public GameObject Hand;
 	public Sprite Image;
 	public Sprite Agent;
 	public Sprite Dr;
 	public Sprite Man;
 	public Sprite Woman;
+	private GameObject SelectedBuilding;
 
 	public GameObject House2;
 	public GameObject House3;
@@ -28,15 +30,37 @@ public class Events : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		DialogSequence = -1;
 		StartCoroutine ("WaitFade");
+		if (PlayerPrefs.HasKey ("fase")) {
+			FaseControler = PlayerPrefs.GetInt ("fase");
+		}
+//		Debug.Log ("fase: " + FaseControler);
 		//DialogText = GameObject.Find ("DialogText");
 		//DialogText = GameObject.Find ("DialogText2");
 		//TextDialog = GameObject.Find ("TextDialog");
-		first_time_agent = true;
-		first_time = true;
-		first_time_dengue = true;
-//	first_time_agent = true;
+		switch (FaseControler) {
+		case 0:
+			first_time_agent = true;
+			first_time = true;
+			first_time_dengue = true;
+			break;
+		case 1:
+			first_time_agent = false;
+			first_time = false;
+			first_time_dengue = false;
+			break;
+		case 2:
+			first_time_agent = false;
+			first_time = false;
+			first_time_dengue = false;
+			break;
+		default:
+			break;
+		}
+		
+
 //		if (!first_time) {
 //			EndDialog();
 //		} else {
@@ -155,8 +179,24 @@ public class Events : MonoBehaviour {
 			DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
 			DialogText2.GetComponent<DialogInfoPanel> ().Info.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
 			DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+			SelectedBuilding = House;
 			DialogText2.SetActive(true);
 		}
+
+		if (House.tag == "WastedTerrain") {
+			Debug.Log("Clicou");
+			if(House.GetComponent<SpriteRenderer>().enabled == true){
+			Time.timeScale = 0;
+			DialogText2.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
+				DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
+				DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = "Terreno Baldio";
+				DialogText2.GetComponent<DialogInfoPanel> ().Info.text = "Aumenta o risco de contaminaçao de moradores proximos.";
+				DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<SpriteRenderer>().sprite ;
+				SelectedBuilding = House;
+				DialogText2.SetActive(true);
+			}
+		}
+
 		if (House.tag == "Habitant" || House.tag == "Jaleco" ) {
 			Time.timeScale = 0;
 			DialogText2.GetComponent<DialogInfoPanel> ().Renda.text = "Idade\n" + House.GetComponent<HabitantMovement>().age;
@@ -208,6 +248,16 @@ public class Events : MonoBehaviour {
 	IEnumerator WaitFade(){
 		yield return new WaitForSeconds (0.4f);
 		DialogSequence = 0;
+	}
+
+	public void GameOver(){
+		Time.timeScale = 0;
+		GameObject.Find ("GameOverText").SetActive (true);
+	}
+
+	public void Victory(){
+		Time.timeScale = 0;
+		GameObject.Find ("VictoryText").SetActive (true);
 	}
 
 

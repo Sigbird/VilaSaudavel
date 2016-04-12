@@ -38,7 +38,7 @@ public class UIInGameController : MonoBehaviour {
 	}
 
 	void Update(){
-		Debug.Log (AudioListener.volume);
+//		Debug.Log (AudioListener.volume);
 		AudioListener.volume = gamevolume;
 
 		if(gamespeed>= 0 && gamespeed <=2)

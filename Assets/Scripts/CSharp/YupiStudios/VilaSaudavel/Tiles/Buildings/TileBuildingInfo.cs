@@ -117,6 +117,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				Manager.Pop = Manager.Pop - 5;
 				//GameObject.Find ("Main Camera").GetComponent<Teste> ().infeccão++;
 				this.contaminada = true;
+				StartCoroutine("Sickness");
 				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.Disease);
 			}
 			
