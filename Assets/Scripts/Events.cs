@@ -6,12 +6,17 @@ public class Events : MonoBehaviour {
 	private static bool first_time;
 	private static bool first_time_agent;
 	private static bool first_time_dengue;
+	private static bool second_intro;
+	private static bool third_intro;
 	public static bool creatures;
 	public bool examin;
 	public bool contamination;
 	public GameObject DialogText;
 	public GameObject DialogText2;
+	public GameObject WastedText;
 	public GameObject TextDialog;
+	public GameObject GameOverWindow;
+	public GameObject VictoryWindow;
 	public static int DialogSequence;
 	public static int FaseControler;
 	public GameObject Hand;
@@ -20,7 +25,7 @@ public class Events : MonoBehaviour {
 	public Sprite Dr;
 	public Sprite Man;
 	public Sprite Woman;
-	private GameObject SelectedBuilding;
+	public GameObject SelectedBuilding;
 
 	public GameObject House2;
 	public GameObject House3;
@@ -45,16 +50,22 @@ public class Events : MonoBehaviour {
 			first_time_agent = true;
 			first_time = true;
 			first_time_dengue = true;
+			second_intro = false;
+			third_intro = false;
 			break;
 		case 1:
 			first_time_agent = false;
 			first_time = false;
 			first_time_dengue = false;
+			second_intro = true;
+			third_intro = false;
 			break;
 		case 2:
 			first_time_agent = false;
 			first_time = false;
 			first_time_dengue = false;
+			second_intro = false;
+			third_intro = true;
 			break;
 		default:
 			break;
@@ -118,7 +129,17 @@ public class Events : MonoBehaviour {
 			first_time_agent = false;
 		}
 //		Debug.Log (DialogSequence);
-	
+		if (second_intro) {
+			if(DialogSequence == 0){
+				StartDialog("Prepare-se! Agora novas ameaças virao ameaçar a saude da sua vila!", Screen.height/2, Screen.width/2 - 400);
+			}
+		}
+
+		if (third_intro) {
+			if(DialogSequence == 0){
+				StartDialog("Muito Bem! Agora precisara usar tudo que aprendeu ate aqui para firmar sua vila!", Screen.height/2, Screen.width/2 - 400);
+			}
+		}
 
 		foreach (GameObject n in GameObject.FindGameObjectsWithTag("Building")) {
 		if(n.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo>().contaminada == true){
@@ -134,11 +155,12 @@ public class Events : MonoBehaviour {
 			RaycastHit info;
 			Physics.Raycast (r, out info, Mathf.Infinity);
 		
-			if (info.collider != null) {
+			if (info.collider != null ) {
 				//Debug.Log (info.collider.tag);
 				StartDialog2 (info.transform.gameObject);
 				//Debug.Log(info.transform.tag);
 			}
+
 	
 		}
 	}
@@ -172,28 +194,28 @@ public class Events : MonoBehaviour {
 
 	public void StartDialog2(GameObject House){
 
-		if (House.tag == "Building" && House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().tileObject.CurrentState == YupiStudios.VilaSaudavel.Tiles.TileObject.ETileObjectState.Placed) {
-			Time.timeScale = 0;
-			DialogText2.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda;
-			DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().saude;
-			DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
-			DialogText2.GetComponent<DialogInfoPanel> ().Info.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
-			DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
-			SelectedBuilding = House;
-			DialogText2.SetActive(true);
-		}
+//		if (House.tag == "Building" && House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().tileObject.CurrentState == YupiStudios.VilaSaudavel.Tiles.TileObject.ETileObjectState.Placed) {
+//			Time.timeScale = 0;
+//			DialogText2.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda;
+//			DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().saude;
+//			DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+//			DialogText2.GetComponent<DialogInfoPanel> ().Info.text = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
+//			DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+//			SelectedBuilding = House;
+//			DialogText2.SetActive(true);
+//		}
 
 		if (House.tag == "WastedTerrain") {
-			Debug.Log("Clicou");
+
 			if(House.GetComponent<SpriteRenderer>().enabled == true){
 			Time.timeScale = 0;
-			DialogText2.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
-				DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
-				DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = "Terreno Baldio";
-				DialogText2.GetComponent<DialogInfoPanel> ().Info.text = "Aumenta o risco de contaminaçao de moradores proximos.";
-				DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<SpriteRenderer>().sprite ;
+				WastedText.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
+				WastedText.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
+				WastedText.GetComponent<DialogInfoPanel> ().Descricao.text = "Terreno Baldio";
+				WastedText.GetComponent<DialogInfoPanel> ().Info.text = "Aumenta o risco de contaminaçao de moradores proximos.";
+				WastedText.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<SpriteRenderer>().sprite ;
 				SelectedBuilding = House;
-				DialogText2.SetActive(true);
+				WastedText.SetActive(true);
 			}
 		}
 
@@ -216,9 +238,15 @@ public class Events : MonoBehaviour {
 		Time.timeScale = 1;
 		DialogText.SetActive(false);
 		DialogText2.SetActive(false);
+		WastedText.SetActive(false);
 		Hand.transform.position = new Vector3 (-100, -100, 0);
 		CamController.enabled = false;
 	}
+
+	public void CloseWasteLand(){
+		SelectedBuilding.GetComponent<SpriteRenderer> ().enabled = false;
+	}
+
 
 	public void TesteRevoada(){
 		
@@ -251,13 +279,14 @@ public class Events : MonoBehaviour {
 	}
 
 	public void GameOver(){
+		GameOverWindow.SetActive (true);
 		Time.timeScale = 0;
-		GameObject.Find ("GameOverText").SetActive (true);
+		
 	}
 
 	public void Victory(){
+		VictoryWindow.SetActive (true);
 		Time.timeScale = 0;
-		GameObject.Find ("VictoryText").SetActive (true);
 	}
 
 

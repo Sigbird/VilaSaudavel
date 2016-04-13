@@ -49,6 +49,9 @@ public class Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (Cash >= 300) {
+			GameObject.Find("Events").GetComponent<Events>().Victory();
+		}
 
 
 		if (Input.GetKey (KeyCode.Space))

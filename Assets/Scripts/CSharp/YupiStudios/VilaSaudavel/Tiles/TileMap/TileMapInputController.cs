@@ -22,9 +22,11 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		}
 		
 		private int buildID;
-		
+		public DialogInfoPanel WindowPanel;
+		public GameObject DialogWindow;
 		public Manager GameManager;
-		
+		public bool Examin	{ get; set; }
+
 		public UIInGameController UIController;
 		private TileMapData Data;
 		private Camera RefCamera;
@@ -363,6 +365,15 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 					if (info.collider.tag == "Building")
 					{
+						if(Examin == true){
+						WindowPanel.Renda.text = "Renda\n" + info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().renda;
+						WindowPanel.Saude.text = "Saude \n" + info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().saude;
+						WindowPanel.Descricao.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
+						WindowPanel.Info.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
+						WindowPanel.ilustracao.sprite = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+						DialogWindow.SetActive(true);
+						}
+
 						Vector3 p = info.point - desloc;
 						Vector2 tile = TileUtils.WorldPosToTile(Data,new Vector3(p.x,0,p.z));
 						
@@ -375,11 +386,12 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 							{					
 								TileHighlighter.gameObject.SetActive(false);
 								SelectObject(tileInfo.ObjectOwner);
+
 								return true;
 							} else 
 							{
 								ClearSelected();
-								//TileHighlighter.gameObject.SetActive(true);
+								TileHighlighter.gameObject.SetActive(true);
 								TileHighlighter.TilePos = tile;
 							}
 							
@@ -408,7 +420,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 							} else 
 							{
 								ClearSelected();
-								//TileHighlighter.gameObject.SetActive(true);
+								TileHighlighter.gameObject.SetActive(true);
 								TileHighlighter.TilePos = tile;
 							}
 							
@@ -661,7 +673,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void DestroySelected()
 		{
 			if (selectedObject != null) {
-				Debug.Log (selectedObject.gameObject.name);
+//				Debug.Log (selectedObject.gameObject.name);
 				GameObject.Destroy (selectedObject.gameObject);
 				selectedObject = null;
 			}

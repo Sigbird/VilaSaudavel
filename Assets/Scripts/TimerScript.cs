@@ -33,6 +33,10 @@ public class TimerScript : MonoBehaviour {
 			month = true;
 		}
 
+		if (days <= 0) {
+			GameObject.Find("Events").GetComponent<Events>().GameOver();
+		}
+
 		TimerUI.GetComponent<Text> ().text = "Restam " + (int)days + " dias";
 	}
 }
