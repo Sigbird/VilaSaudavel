@@ -7,8 +7,12 @@ public class DialogInfoPanel : MonoBehaviour {
 	public Text Renda;
 	public Text Saude;
 	public Text Descricao;
+	public Text Status;
 	public Text Info;
 	public Image ilustracao;
+	public Image contaminAlert;
+	public GameObject DestroyButton;
+	public GameObject UpgradeButton;
 
 	// Use this for initialization
 	void Start () {

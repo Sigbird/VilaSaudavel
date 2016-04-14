@@ -370,7 +370,20 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 						WindowPanel.Saude.text = "Saude \n" + info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().saude;
 						WindowPanel.Descricao.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().descriçao;
 						WindowPanel.Info.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
+						WindowPanel.Status.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status;
 						WindowPanel.ilustracao.sprite = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+							if(info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status == "Contaminada"){
+								WindowPanel.Info.color = Color.red;
+								WindowPanel.Status.color = Color.red;
+								WindowPanel.contaminAlert.enabled = true;
+							}
+							else{
+								WindowPanel.Info.color = Color.black;
+								WindowPanel.Status.color = Color.white;
+								WindowPanel.contaminAlert.enabled = false;
+							}
+						WindowPanel.DestroyButton.SetActive(true);
+						WindowPanel.UpgradeButton.SetActive(true);
 						DialogWindow.SetActive(true);
 						}
 

@@ -20,6 +20,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		public int renda;
 		public string descriçao;
 		public string info;
+		public string status;
 		public Sprite ilustracao;
 
 
@@ -78,17 +79,25 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 						this.renda = 0;
 						this.saude = (int)Manager.Health;
 						this.descriçao = "Posto de Saude";
-						this.info = "Gera agentes de Saude";
+						this.status = "Saudável";
+						this.info = "'Estamos prontos para atender todos os casos.'";
 				}else if( this.buildingType == EBuildingType.Hospital){
 						this.renda = 0;
 						this.saude = (int)Manager.Health;
 						this.descriçao = "Hospital";
-						this.info = "Trata Pacientes";
+						this.status = "Saudável";
+						this.info = "'Trataremos qualquer caso de saude que precisar.'";
 					}else if ( this.buildingType == EBuildingType.SimpleHouse){
 						this.renda = 120;
 						this.saude = (int)Manager.Health;
 						this.descriçao = "Casa";
-						this.info = "Moradia Basica";
+						if(contaminada){
+							this.status = "Contaminada";
+							this.info = "'Estamos adoentados precisamos de ajuda de um agente de Saúde!'";
+						}else{
+							this.status = "Saudável";
+							this.info = "'Este parece um bom lugar para viver mas precisamos de mais vizinhos.'";
+						}
 					}
 
 

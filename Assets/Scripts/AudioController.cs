@@ -35,7 +35,10 @@ public class AudioController : MonoBehaviour {
 	void Start () {
 		Source = GetComponent<AudioSource> ();
 		Source.volume = 0.2f;
-		PlayState (EAudioState.Background);
+		//PlayState (EAudioState.Background);
+		Source.clip = backGroundSound;
+		Source.Play ();
+		Source.loop = true;
 	}
 	
 	// Update is called once per frame

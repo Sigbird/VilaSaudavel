@@ -16,6 +16,7 @@ public class HabitantMovement : MonoBehaviour {
 	public int age;
 	public string name;
 	public string info;
+	public string status;
 	public Sprite ilustracao;
 	public bool contaminado;
 	private bool contaminadocd;
@@ -56,7 +57,12 @@ public class HabitantMovement : MonoBehaviour {
 			this.gameObject.tag = "Jaleco";
 			this.name = "Rebeca";
 			this.age = 20;
-			this.info = "Agente de Saude";
+			this.info = "Pronta para Servir aos Moradores!";
+			if(contaminado){
+				this.status = "Contaminado";
+			}else{
+				this.status = "Agente";
+			}
 			this.ilustracao = Sprite1;
 
 		}
@@ -65,21 +71,38 @@ public class HabitantMovement : MonoBehaviour {
 
 			this.name = "Jaleco";
 			this.age = 30;
-			this.info = "Doutor Jaleco";
+			this.info = "Saude em primeiro lugar!";
+			if(contaminado){
+				this.status = "Contaminado";
+			}else{
+				this.status = "Doutor";
+			}
 			this.ilustracao = Sprite3;
 		}
 		if (character == 2) {
 			
 			this.name = "Vanessa";
 			this.age = 20;
-			this.info = "Cidada de vila Saudavel";
+			if(contaminado){
+				this.info = "Estou Doente preciso de atendimento Medico!";
+				this.status = "Contaminado";
+			}else{
+				this.info = "Ola, sou nova moradora, que alegria!";
+				this.status = "Moradora";
+			}
 			this.ilustracao = Sprite2;
 		}
 		if (character == 0) {
 			
 			this.name = "Tony";
 			this.age = 20;
-			this.info = "Cidadao de vila Saudavel";
+			if(contaminado){
+				this.info = "Estou Doente preciso de atendimento Medico!";
+				this.status = "Contaminado";
+			}else{
+				this.info = "Ola sou novo morador, que alegria!";
+				this.status = "Morador";
+			}
 			this.ilustracao = Sprite0;
 		}
 

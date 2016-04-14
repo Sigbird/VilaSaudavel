@@ -103,7 +103,7 @@ public class Events : MonoBehaviour {
 				if(GameObject.Find("DialogImage") != null){
 					GameObject.Find("DialogImage").GetComponent<Image>().sprite = Dr; 
 				}
-				StartDialog("Muito Bem! Agora moradores estao chegando a sua vila!", -100, -100);
+				StartDialog("Muito Bem! Agora moradores estão chegando a sua vila!", -100, -100);
 				CamController.enabled = true;
 				CamController.SetTrigger("Entrance");
 				House2.GetComponent<Button>().interactable = true;
@@ -116,7 +116,7 @@ public class Events : MonoBehaviour {
 			if(GameObject.Find("DialogImage") != null){
 				GameObject.Find("DialogImage").GetComponent<Image>().sprite = Dr; 
 			}
-			StartDialog ("Oh Nao! Um foco de dengue foi detectado! Rapido vamos contruir um posto de saude!", 0, 0);
+			StartDialog ("Oh Não! Um foco de dengue foi detectado! Rápido vamos contruir um posto de saúde!", 0, 0);
 			first_time_dengue = false;
 		}
 
@@ -125,19 +125,19 @@ public class Events : MonoBehaviour {
 				GameObject.Find("DialogImage").GetComponent<Image>().sprite = Agent; 
 			}
 
-			StartDialog ("Parabens! Postos de saude ajudam a manter a saude nas casas, uma familia doente contribui menos para os recursos da vila.", 0, 0);
+			StartDialog ("Parabéns! Postos de saúde ajudam a manter a saúde nas casas, uma família doente contribui menos para os recursos da vila.", 0, 0);
 			first_time_agent = false;
 		}
 //		Debug.Log (DialogSequence);
 		if (second_intro) {
 			if(DialogSequence == 0){
-				StartDialog("Prepare-se! Agora novas ameaças virao ameaçar a saude da sua vila!", Screen.height/2, Screen.width/2 - 400);
+				StartDialog("Prepare-se! Agora novas ameaças afetarão a saúde da sua vila!", Screen.height/2, Screen.width/2 - 400);
 			}
 		}
 
 		if (third_intro) {
 			if(DialogSequence == 0){
-				StartDialog("Muito Bem! Agora precisara usar tudo que aprendeu ate aqui para firmar sua vila!", Screen.height/2, Screen.width/2 - 400);
+				StartDialog("Muito Bem! Agora precisará usar tudo que aprendeu até aqui para firmar sua vila!", Screen.height/2, Screen.width/2 - 400);
 			}
 		}
 
@@ -212,7 +212,11 @@ public class Events : MonoBehaviour {
 				WastedText.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
 				WastedText.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
 				WastedText.GetComponent<DialogInfoPanel> ().Descricao.text = "Terreno Baldio";
+				WastedText.GetComponent<DialogInfoPanel> ().Descricao.color = Color.red;
+				WastedText.GetComponent<DialogInfoPanel> ().Status.text = "Contaminado";
+				WastedText.GetComponent<DialogInfoPanel> ().Status.color = Color.red;
 				WastedText.GetComponent<DialogInfoPanel> ().Info.text = "Aumenta o risco de contaminaçao de moradores proximos.";
+				WastedText.GetComponent<DialogInfoPanel> ().Info.color = Color.red;
 				WastedText.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<SpriteRenderer>().sprite ;
 				SelectedBuilding = House;
 				WastedText.SetActive(true);
@@ -225,7 +229,19 @@ public class Events : MonoBehaviour {
 			DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + House.GetComponent<HabitantMovement>().healt;
 			DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = House.GetComponent<HabitantMovement>().name;
 			DialogText2.GetComponent<DialogInfoPanel> ().Info.text = House.GetComponent<HabitantMovement>().info;
+			DialogText2.GetComponent<DialogInfoPanel> ().Status.text = House.GetComponent<HabitantMovement>().status;
 			DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<HabitantMovement>().ilustracao;
+			DialogText2.GetComponent<DialogInfoPanel> ().DestroyButton.SetActive(false);
+			DialogText2.GetComponent<DialogInfoPanel> ().UpgradeButton.SetActive(false);
+			if(House.GetComponent<HabitantMovement>().status == "Contaminado"){
+				DialogText2.GetComponent<DialogInfoPanel> ().Info.color = Color.red;
+				DialogText2.GetComponent<DialogInfoPanel> ().Status.color = Color.red;
+				DialogText2.GetComponent<DialogInfoPanel> ().contaminAlert.enabled = true;
+			}else{
+				DialogText2.GetComponent<DialogInfoPanel> ().Info.color = Color.black;
+				DialogText2.GetComponent<DialogInfoPanel> ().Status.color = Color.white;
+				DialogText2.GetComponent<DialogInfoPanel> ().contaminAlert.enabled = false;
+			}
 			DialogText2.SetActive(true);
 		}
 			//DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.
