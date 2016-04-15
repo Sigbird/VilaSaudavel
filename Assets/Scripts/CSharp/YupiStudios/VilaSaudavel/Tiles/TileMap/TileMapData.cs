@@ -354,7 +354,12 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 
 
+		void Update (){
 
+			if (Input.GetKeyDown (KeyCode.F))
+				CreateWorldMap ();
+
+		}
 
 
 

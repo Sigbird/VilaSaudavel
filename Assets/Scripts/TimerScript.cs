@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour {
 	public static float timercount;
 	private int monthcount;
-	public int days;
+	public static int days;
 	public static bool month;
 	public GameObject TimerUI;
 	public Animator Alert;

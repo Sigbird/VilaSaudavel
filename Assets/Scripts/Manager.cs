@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour {
 
+	public int habitants;
+
 	public static int Cash;
 
 	public static float Pop;
@@ -37,11 +39,11 @@ public class Manager : MonoBehaviour {
 	void Start () {
 		Cash = 100;
 
-		MaxPop = 0;
+		Health = 100;
 
-		MaxHealth = 100;
+		MaxHealth = 200;
 
-		Health = 0;
+		MaxPop = 100;
 
 		Pop = 0;
 	}
@@ -51,6 +53,11 @@ public class Manager : MonoBehaviour {
 
 		if (Cash >= 300) {
 			GameObject.Find("Events").GetComponent<Events>().Victory();
+		}
+
+		if (habitants >= 25) {
+			Destroy( GameObject.FindGameObjectsWithTag("Habitant")[0]);
+			habitants--;
 		}
 
 
@@ -70,17 +77,62 @@ public class Manager : MonoBehaviour {
 		if (GameObject.Find ("VolumeSlider") != null)
 			AudioListener.volume = GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value;
 
+		if (GameObject.Find ("GoalsTitle") != null)
+			GameObject.Find ("GoalsTitle").GetComponent<Text> ().text = "Restam " + TimerScript.days + " Dias";
+
+		if (GameObject.Find ("HouseQtd1") != null)
+			GameObject.Find ("HouseQtd1").GetComponent<Text> ().text = GameObject.FindGameObjectsWithTag("Building").Length.ToString();
+
+		if (GameObject.Find ("HouseBonusCash1") != null)
+			GameObject.Find ("HouseBonusCash1").GetComponent<Text> ().text = "+" + (GameObject.FindGameObjectsWithTag ("Building").Length * 120).ToString ();
+
+		if (GameObject.Find ("HouseBonusHealt1") != null)
+			GameObject.Find ("HouseBonusHealt1").GetComponent<Text> ().text = "+" + Health.ToString ();
+
+		if (GameObject.Find ("HouseBonusPop1") != null)
+			GameObject.Find ("HouseBonusPop1").GetComponent<Text> ().text = "+" + (GameObject.FindGameObjectsWithTag ("Building").Length * 10).ToString ();
+
+		//Cash Statistic
 		if (GameObject.Find ("StatisticCash") != null)
 			GameObject.Find ("StatisticCash").GetComponent<Text> ().text = Cash.ToString ();
 
 		if (GameObject.Find ("StatisticCashGoal") != null)
-			GameObject.Find ("StatisticCashGoal").GetComponent<Text> ().text = "1000";
+			GameObject.Find ("StatisticCashGoal").GetComponent<Text> ().text = "300";
 
 		if (GameObject.Find ("StatisticCashTitle") != null)
 			GameObject.Find ("StatisticCashTitle").GetComponent<Text> ().text = "A Vila gera " + ((Pop/10)*120).ToString() + " moedas por mês";
 
+		if (GameObject.Find ("CashStatBar") != null)
+			GameObject.Find ("CashStatBar").GetComponent<Animator> ().SetFloat ("Value", Cash);
+
+
+
+		// Healt Statistic
 		if (GameObject.Find ("StatisticHealt") != null)
-			GameObject.Find ("StatisticHealt").GetComponent<Text> ().text = "A Vila possui " + Health.ToString() + " de Saude";
+			GameObject.Find ("StatisticHealt").GetComponent<Text> ().text = Health.ToString ();
+		
+		if (GameObject.Find ("StatisticHealtGoal") != null)
+			GameObject.Find ("StatisticHealtGoal").GetComponent<Text> ().text = "200";
+
+		if (GameObject.Find ("StatisticHealtTitle") != null)
+			GameObject.Find ("StatisticHealtTitle").GetComponent<Text> ().text = "A Vila possui " + Health.ToString() + " de Saude";
+
+		if (GameObject.Find ("HealtStatBar") != null)
+			GameObject.Find ("HealtStatBar").GetComponent<Animator> ().SetFloat ("Value", Health);
+
+
+		// Population Statistic
+		if (GameObject.Find ("StatisticPop") != null)
+			GameObject.Find ("StatisticPop").GetComponent<Text> ().text = Pop.ToString ();
+		
+		if (GameObject.Find ("StatisticPopGoal") != null)
+			GameObject.Find ("StatisticPopGoal").GetComponent<Text> ().text = "100";
+		
+		if (GameObject.Find ("StatisticPopTitle") != null)
+			GameObject.Find ("StatisticPopTitle").GetComponent<Text> ().text = "A Vila possui " + Health.ToString() + " de Saude";
+	
+		if (GameObject.Find ("PopStatBar") != null)
+			GameObject.Find ("PopStatBar").GetComponent<Animator> ().SetFloat ("Value", Pop);
 
 	}
 
@@ -141,6 +193,7 @@ public class Manager : MonoBehaviour {
 		}
 
 	IEnumerator estanciar(){
+		habitants = habitants + 2;
 		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 0;
 		MaxPop = MaxPop + 5;
@@ -153,6 +206,7 @@ public class Manager : MonoBehaviour {
 	}
 
 	IEnumerator estanciarAgente(){
+		habitants = habitants + 1;
 		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 1;
 		Health = Health + 10;
@@ -164,6 +218,7 @@ public class Manager : MonoBehaviour {
 	}
 
 	IEnumerator estanciarDr(){
+		habitants = habitants + 2;
 		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 3;
 		Health = Health + 5;
