@@ -12,8 +12,9 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		private bool month;
 		private float timer;
 		private float monthcont;
-		public SpriteRenderer renderer;
 		public Animator notifications;
+		public SpriteRenderer renderer;
+		
 
 		//ESTATISTICAS
 		public int saude;

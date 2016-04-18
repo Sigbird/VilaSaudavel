@@ -196,12 +196,12 @@ public class Manager : MonoBehaviour {
 		habitants = habitants + 2;
 		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 0;
-		MaxPop = MaxPop + 5;
+		//MaxPop = MaxPop + 5;
 		Pop = Pop + 5;
 		yield return new WaitForSeconds (2f);
 		A = (GameObject) Instantiate  (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 2;
-		MaxPop = MaxPop + 5;
+		///MaxPop = MaxPop + 5;
 		Pop = Pop + 5;
 	}
 

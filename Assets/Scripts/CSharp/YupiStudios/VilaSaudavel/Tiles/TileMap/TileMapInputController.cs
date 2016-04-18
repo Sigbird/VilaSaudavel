@@ -505,6 +505,11 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		// Start Creation Manager
 		
 		public void CreateCustom(int x){
+
+			Camera.main.GetComponent<Animator>().enabled = true;
+			Camera.main.GetComponent<Animator>().SetTrigger("Pan");
+
+
 			switch (x) {
 			case 1:
 				if (Manager.Cash >= 20) {
@@ -804,8 +809,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				UpdateInputType ();
 			} 
 			
-			if(Input.GetKeyDown(KeyCode.A))
-				movingbuilding = true;
+			if(Input.GetMouseButtonDown(0))
+				Camera.main.GetComponent<Animator>().enabled = false;
 		}
 		
 	}

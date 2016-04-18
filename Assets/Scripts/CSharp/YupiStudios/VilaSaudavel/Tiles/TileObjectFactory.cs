@@ -14,6 +14,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 		public TileUtils.MatSettings SelectedMaterialSettings;
 
+		public GameObject obj;
+
 		public Transform [] tileObjects;
 
 		private TileMapData TileMapData;
@@ -33,6 +35,17 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			}
 
 
+		}
+
+		public void RotateSprite(){
+			if (obj.GetComponent<TileObject>().spriterot< 3 && obj.GetComponent<TileObject>().CurrentState == TileObject.ETileObjectState.Moving) {
+				obj.GetComponent<TileObject>().spriterot ++;
+				obj.GetComponent<TileObject>().Sprite.sprite = obj.GetComponent<TileObject>().SpriteRotation [obj.GetComponent<TileObject>().spriterot];
+			} else if(obj.GetComponent<TileObject>().CurrentState == TileObject.ETileObjectState.Moving) {
+				obj.GetComponent<TileObject>().spriterot = 0;
+				obj.GetComponent<TileObject>().Sprite.sprite = obj.GetComponent<TileObject>().SpriteRotation [obj.GetComponent<TileObject>().spriterot];
+			}
+			
 		}
 
 		public void TryInstantiateObject(int objectIndex)
@@ -62,7 +75,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			if (TileMapData.CurrentState == TileMapData.EWorldMapState.Idle) {
 
 
-				GameObject obj = (Instantiate(tileObjects[objectIndex]) as Transform).gameObject;
+				obj = (Instantiate(tileObjects[objectIndex]) as Transform).gameObject;
 				TileObject tileObject = obj.GetComponent<TileObject>();
 
 				if (tileObject == null)

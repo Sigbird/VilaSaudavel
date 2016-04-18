@@ -131,6 +131,12 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		/////////////////////////////////////////////////
 		public SpriteRenderer Sprite;
 
+		///////////////////////////////////////////////////
+		//Sprites de Rotaçao do Objeto
+		///////////////////////////////////////////////////
+		public Sprite[] SpriteRotation;
+		public int spriterot;
+
 
 		/////////////////////////////////////////////////
 		// Animador do Objeto
@@ -306,6 +312,16 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			movingMesh.enabled = turnOn;
 		}
 
+		private void RotateSprite(){
+			if (this.spriterot < 3 && CurrentState == ETileObjectState.Moving) {
+				this.spriterot ++;
+				Sprite.sprite = SpriteRotation [spriterot];
+			} else if(CurrentState == ETileObjectState.Moving) {
+				this.spriterot = 0;
+				Sprite.sprite = SpriteRotation [spriterot];
+			}
+		
+		}
 
 		
 
@@ -523,7 +539,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		void FixedUpdate(){
 
 
-
+			if (Input.GetKeyDown (KeyCode.K))
+				RotateSprite ();
 
 
 			Sprite.sortingOrder = (int)TilePosition.y - (int)TilePosition.x;

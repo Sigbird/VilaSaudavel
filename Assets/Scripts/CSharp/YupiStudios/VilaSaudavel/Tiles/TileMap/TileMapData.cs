@@ -488,6 +488,16 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 
 		void Awake() {
 			CurrentState = EWorldMapState.Idle;
+			if (PlayerPrefs.HasKey ("fase")) {
+				if (PlayerPrefs.GetInt ("fase") < 2) {
+					WorldSettings.StageId = PlayerPrefs.GetInt ("fase").ToString ();
+					LoadStage ();
+				} else {
+					WorldSettings.StageId = "1";
+					LoadStage ();
+				}
+			}
+			Debug.Log (WorldSettings.StageId);
 			//LoadStage ();
 		}
 

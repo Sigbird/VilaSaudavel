@@ -7,6 +7,7 @@ public class UIInGameController : MonoBehaviour {
 	public GameObject uiFrontPanel;
 	public GameObject uiBuildButton;
 	public GameObject uiFinishBuildButton;
+	public GameObject uiRotateBuildButton;
 	public GameObject uiBackBuildButon;
 	public GameObject buildBackground;
 	public GameObject uiBuildingOptions;
@@ -80,6 +81,7 @@ public class UIInGameController : MonoBehaviour {
 		uiBuildButton.SetActive(false);				//Desativa botao do menu de construir
 		uiFrontPanel.SetActive(false);				//Desativa painel frontal
 		uiFinishBuildButton.SetActive(true);		//Ativa o botao de finalizar construcao
+		uiRotateBuildButton.SetActive (true); 		//Ativa o botao de rotacionar construçao
 		buildBackground.SetActive (false);			//Desativa o background
 		buildBG.SetActive (false);					//Desativa o panel background (tela cinza de fundo)
 		openBuildOptions.SetTrigger ("Pressed");	//Dispara o trigger da animaçao
