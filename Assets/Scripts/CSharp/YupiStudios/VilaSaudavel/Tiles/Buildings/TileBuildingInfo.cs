@@ -30,7 +30,9 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 			SimpleHouse,
 			HealthCenter, // posto de saude
-			Hospital
+			Hospital,
+			Praca,
+			Tratamento
 		}
 
 
@@ -76,7 +78,19 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				
 
 
-			if ( this.buildingType == EBuildingType.HealthCenter){
+			if ( this.buildingType == EBuildingType.Tratamento){
+				this.renda = 0;
+				this.saude = (int)Manager.Health;
+				this.descriçao = "Estaçao de Tratamento";
+				this.status = "Saudável";
+				this.info = "'Estaçao para saneamento e manutençao da rede de esgoto da cidade'";
+				}else if ( this.buildingType == EBuildingType.Praca){
+					this.renda = 0;
+					this.saude = (int)Manager.Health;
+					this.descriçao = "Praça";
+					this.status = "Saudável";
+					this.info = "'Lugar ideal para praticar sua atividade fisica e entrar em forma!'";
+				}else if ( this.buildingType == EBuildingType.HealthCenter){
 						this.renda = 0;
 						this.saude = (int)Manager.Health;
 						this.descriçao = "Posto de Saude";
@@ -103,7 +117,30 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 
 
-		
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Habitant")) {
+				
+				if (Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.Praca && obj.GetComponent<HabitantMovement>().obeso) {
+					obj.GetComponent<HabitantMovement> ().obeso = false;
+					StartCoroutine(ReceiveHabitant(obj));
+				}
+
+				if (Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.SimpleHouse) {
+					float x = Random.value;
+					if ( x <= 0.5 && obj.GetComponent<HabitantMovement>().beenInHouse) {
+						obj.GetComponent<HabitantMovement>().beenInHouse = false;
+						StartCoroutine(ReceiveHabitant(obj));
+					}
+				}
+
+			}
+
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ManHole")) {
+				
+				if (Vector3.Distance (transform.position, obj.transform.position) <= 2.2f && this.buildingType == EBuildingType.Tratamento) {
+					obj.GetComponent<SpriteRenderer> ().enabled = false;
+				}
+				
+			}
 
 			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Jaleco")) {
 				
@@ -141,8 +178,16 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				yield return new WaitForSeconds (1);
 				StartCoroutine("Sickness");
 			} 
-			
-			
+		}
+
+		IEnumerator ReceiveHabitant(GameObject Obj){
+
+			Obj.GetComponent<HabitantMovement> ().speed = 0;
+			Obj.GetComponent<HabitantMovement> ().renderer.enabled = false;
+				yield return new WaitForSeconds (3);
+			Obj.GetComponent<HabitantMovement> ().renderer.enabled = true;
+			Obj.GetComponent<HabitantMovement> ().speed = 30;
+
 		}
 
 	}

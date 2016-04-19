@@ -10,6 +10,7 @@ public class HabitantMovement : MonoBehaviour {
 	public int character;
 	private float timer;
 	public float percentage;
+	public bool beenInHouse;
 
 	//Statistics
 	public int healt;
@@ -19,6 +20,7 @@ public class HabitantMovement : MonoBehaviour {
 	public string status;
 	public Sprite ilustracao;
 	public bool contaminado;
+	public bool obeso;
 	private bool contaminadocd;
 	public Sprite Sprite0;
 	public Sprite Sprite1;
@@ -31,12 +33,19 @@ public class HabitantMovement : MonoBehaviour {
 		Events.DialogSequence = 2;
 		this.healt = 100;
 		contaminadocd = true;
+		beenInHouse = false;
+		StartCoroutine ("InHouseCD");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		if (contaminado == true && contaminadocd == true) {
+			StartCoroutine("Sickness");
+			contaminadocd = false;
+		}
+
+		if (obeso == true && contaminadocd == true) {
 			StartCoroutine("Sickness");
 			contaminadocd = false;
 		}
@@ -86,6 +95,9 @@ public class HabitantMovement : MonoBehaviour {
 			if(contaminado){
 				this.info = "Estou Doente preciso de atendimento Medico!";
 				this.status = "Contaminado";
+			}else if(obeso){
+				this.info = "Preciso praticar atividades fisicas para emagrecer um pouco!";
+				this.status = "Obeso";
 			}else{
 				this.info = "Ola, sou nova moradora, que alegria!";
 				this.status = "Moradora";
@@ -99,6 +111,9 @@ public class HabitantMovement : MonoBehaviour {
 			if(contaminado){
 				this.info = "Estou Doente preciso de atendimento Medico!";
 				this.status = "Contaminado";
+			}else if(obeso){
+				this.info = "Preciso praticar atividades fisicas para emagrecer um pouco!";
+				this.status = "Obeso";
 			}else{
 				this.info = "Ola sou novo morador, que alegria!";
 				this.status = "Morador";
@@ -144,7 +159,7 @@ public class HabitantMovement : MonoBehaviour {
 	}
 
 	IEnumerator Sickness(){
-		if (contaminado) {
+		if (contaminado || obeso) {
 			renderer.color = Color.magenta;
 			yield return new WaitForSeconds (1);
 			renderer.color = Color.white;
@@ -153,6 +168,16 @@ public class HabitantMovement : MonoBehaviour {
 		} 
 
 	
+	}
+
+	IEnumerator InHouseCD(){
+		if (this.beenInHouse) {
+			yield return new WaitForSeconds (5);
+			this.beenInHouse = false;
+		} else {
+			yield return new WaitForSeconds (0.5f);
+		}
+		StartCoroutine ("InHouseCD");
 	}
 
 	void FollowTargetWitouthRotation(GameObject target, float distanceToStop, float speed)

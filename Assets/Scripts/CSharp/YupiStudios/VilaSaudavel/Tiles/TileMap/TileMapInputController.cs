@@ -625,7 +625,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void CreateCondiminio()
 		{
 			if (Manager.Cash >= 0) {
-				this.buildID = 2;
+				this.buildID = 1;
 				objectFactory.TryInstantiateObject (3);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
@@ -636,7 +636,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void CreatePraca()
 		{
 			if (Manager.Cash >= 0) {
-				this.buildID = 2;
+				this.buildID = 0;
 				objectFactory.TryInstantiateObject (4);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
@@ -647,7 +647,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void CreateLixeira()
 		{
 			if (Manager.Cash >= 0) {
-				this.buildID = 1;
+				this.buildID = 0;
 				objectFactory.TryInstantiateObject (5);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
@@ -658,7 +658,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void CreateTratamento()
 		{
 			if (Manager.Cash >= 0) {
-				this.buildID = 1;
+				this.buildID = 0;
 				objectFactory.TryInstantiateObject (6);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {
@@ -669,7 +669,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void CreateMercado()
 		{
 			if (Manager.Cash >= 0) {
-				this.buildID = 1;
+				this.buildID = 0;
 				objectFactory.TryInstantiateObject (7);
 				TileHighlighter.gameObject.SetActive (false);
 			} else {

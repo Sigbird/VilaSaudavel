@@ -497,7 +497,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					LoadStage ();
 				}
 			}
-			Debug.Log (WorldSettings.StageId);
+//			Debug.Log (WorldSettings.StageId);
 			//LoadStage ();
 		}
 

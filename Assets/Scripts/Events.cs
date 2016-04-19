@@ -223,6 +223,42 @@ public class Events : MonoBehaviour {
 			}
 		}
 
+		if (House.tag == "HotDog") {
+			
+			if(House.GetComponent<SpriteRenderer>().enabled == true){
+				Time.timeScale = 0;
+				WastedText.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
+				WastedText.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
+				WastedText.GetComponent<DialogInfoPanel> ().Descricao.text = "Cachorro Quente";
+				WastedText.GetComponent<DialogInfoPanel> ().Descricao.color = Color.red;
+				WastedText.GetComponent<DialogInfoPanel> ().Status.text = "Obesidade";
+				WastedText.GetComponent<DialogInfoPanel> ().Status.color = Color.red;
+				WastedText.GetComponent<DialogInfoPanel> ().Info.text = "Venha saborear deliciosos cachorros quentes.";
+				WastedText.GetComponent<DialogInfoPanel> ().Info.color = Color.red;
+				WastedText.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<SpriteRenderer>().sprite ;
+				SelectedBuilding = House;
+				WastedText.SetActive(true);
+			}
+		}
+
+		if (House.tag == "ManHole") {
+			
+			if(House.GetComponent<SpriteRenderer>().enabled == true){
+				Time.timeScale = 0;
+				WastedText.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
+				WastedText.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
+				WastedText.GetComponent<DialogInfoPanel> ().Descricao.text = "Boeiro";
+				WastedText.GetComponent<DialogInfoPanel> ().Descricao.color = Color.red;
+				WastedText.GetComponent<DialogInfoPanel> ().Status.text = "Quebrado";
+				WastedText.GetComponent<DialogInfoPanel> ().Status.color = Color.red;
+				WastedText.GetComponent<DialogInfoPanel> ().Info.text = "Falta de saneamento desencadeia em graves problemas de saude";
+				WastedText.GetComponent<DialogInfoPanel> ().Info.color = Color.red;
+				WastedText.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<SpriteRenderer>().sprite ;
+				SelectedBuilding = House;
+				WastedText.SetActive(true);
+			}
+		}
+
 		if (House.tag == "Habitant" || House.tag == "Jaleco" ) {
 			Time.timeScale = 0;
 			DialogText2.GetComponent<DialogInfoPanel> ().Renda.text = "Idade\n" + House.GetComponent<HabitantMovement>().age;
@@ -233,7 +269,7 @@ public class Events : MonoBehaviour {
 			DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<HabitantMovement>().ilustracao;
 			DialogText2.GetComponent<DialogInfoPanel> ().DestroyButton.SetActive(false);
 			DialogText2.GetComponent<DialogInfoPanel> ().UpgradeButton.SetActive(false);
-			if(House.GetComponent<HabitantMovement>().status == "Contaminado"){
+			if(House.GetComponent<HabitantMovement>().status == "Contaminado" || House.GetComponent<HabitantMovement>().status == "Obeso"){
 				DialogText2.GetComponent<DialogInfoPanel> ().Info.color = Color.red;
 				DialogText2.GetComponent<DialogInfoPanel> ().Status.color = Color.red;
 				DialogText2.GetComponent<DialogInfoPanel> ().contaminAlert.enabled = true;
