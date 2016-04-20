@@ -41,6 +41,13 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 		public TileObject tileObject;
 
+		void Start(){
+			this.saude = 100;
+
+			if ( this.buildingType == EBuildingType.SimpleHouse)
+				this.renda = 120;
+		}
+
 		void Update(){
 
 			this.percentage = Manager.Pop;
@@ -80,33 +87,34 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 			if ( this.buildingType == EBuildingType.Tratamento){
 				this.renda = 0;
-				this.saude = (int)Manager.Health;
+				//this.saude = (int)Manager.Health;
 				this.descriçao = "Estaçao de Tratamento";
 				this.status = "Saudável";
 				this.info = "'Estaçao para saneamento e manutençao da rede de esgoto da cidade'";
 				}else if ( this.buildingType == EBuildingType.Praca){
 					this.renda = 0;
-					this.saude = (int)Manager.Health;
+					//this.saude = (int)Manager.Health;
 					this.descriçao = "Praça";
 					this.status = "Saudável";
 					this.info = "'Lugar ideal para praticar sua atividade fisica e entrar em forma!'";
 				}else if ( this.buildingType == EBuildingType.HealthCenter){
 						this.renda = 0;
-						this.saude = (int)Manager.Health;
+						//this.saude = (int)Manager.Health;
 						this.descriçao = "Posto de Saude";
 						this.status = "Saudável";
 						this.info = "'Estamos prontos para atender todos os casos.'";
 				}else if( this.buildingType == EBuildingType.Hospital){
 						this.renda = 0;
-						this.saude = (int)Manager.Health;
+						//this.saude = (int)Manager.Health;
 						this.descriçao = "Hospital";
 						this.status = "Saudável";
 						this.info = "'Trataremos qualquer caso de saude que precisar.'";
 					}else if ( this.buildingType == EBuildingType.SimpleHouse){
-						this.renda = 120;
-						this.saude = (int)Manager.Health;
+						//this.renda = 120;
+						//this.saude = (int)Manager.Health;
 						this.descriçao = "Casa";
 						if(contaminada){
+							this.saude = this.saude/2;
 							this.status = "Contaminada";
 							this.info = "'Estamos adoentados precisamos de ajuda de um agente de Saúde!'";
 						}else{
@@ -126,8 +134,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 				if (Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.SimpleHouse) {
 					float x = Random.value;
-					if ( x <= 0.5 && obj.GetComponent<HabitantMovement>().beenInHouse) {
-						obj.GetComponent<HabitantMovement>().beenInHouse = false;
+					if ( x <= 0.5 && obj.GetComponent<HabitantMovement>().beenInHouse == false) {
+						obj.GetComponent<HabitantMovement>().beenInHouse = true;
 						StartCoroutine(ReceiveHabitant(obj));
 					}
 				}
@@ -146,6 +154,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				
 				if(x != null && Vector3.Distance(x.transform.position, transform.position)< 2 && this.contaminada == true){
 					this.contaminada = false;
+					StartCoroutine(ReceiveHabitant(x));
 					notifications.SetBool("Sick", false);
 					Manager.Pop = Manager.Pop + 5;
 				}
@@ -179,6 +188,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 				StartCoroutine("Sickness");
 			} 
 		}
+
+
 
 		IEnumerator ReceiveHabitant(GameObject Obj){
 

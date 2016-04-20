@@ -102,12 +102,11 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 			Vector2 newTouch = Input.mousePosition;
 			
 			Vector3 pos = RefCamera.transform.position;
-			
 			float x = pos.x +  movingSpeedFactor.x * (touch1.x - newTouch.x);
 			float z = pos.z + movingSpeedFactor.y * (touch1.y - newTouch.y);
-			
-			SetCameraPos (new Vector3 (x, pos.y, z));
-			
+			if (x >= 45 && x <= 74 && z <= 11 && z >= -10) {
+				SetCameraPos (new Vector3 (x, pos.y, z));
+			}
 			touch1 = Input.mousePosition;
 		}
 		
@@ -326,6 +325,9 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 					{
 						//TileHighlighter.gameObject.SetActive(true);
 					}
+
+
+
 				}
 				
 				
@@ -687,7 +689,11 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.CantDo);
 			}
 		}
-		
+
+		public void Upgrade(){
+			selectedObject.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.TileObject> ().Upgrade ();
+		}
+
 		public void DestroySelected()
 		{
 			if (selectedObject != null) {
@@ -696,7 +702,16 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 				selectedObject = null;
 			}
 		}
-		
+
+		public void DestroySelected3(){
+			
+			if (selectedObject != null) {
+				//				Debug.Log (selectedObject.gameObject.name);
+				selectedObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+				selectedObject = null;
+			}
+		}
+
 		public void DestroySelected2(){
 			
 			foreach (GameObject x in GameObject.FindGameObjectsWithTag("tileobject")) {

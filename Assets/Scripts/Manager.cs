@@ -6,6 +6,8 @@ public class Manager : MonoBehaviour {
 
 	public int habitants;
 
+	private int houses;
+
 	public static int Cash;
 
 	public static float Pop;
@@ -37,6 +39,9 @@ public class Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		houses = 0;
+
 		Cash = 100;
 
 		Health = 100;
@@ -64,13 +69,15 @@ public class Manager : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Space))
 			Cash++;
 
+		Health = houses - ContaminadeHouses ();
 
+		MaxHealth = houses;
 
 		PopulationSphere.SetFloat("Value",((Pop / MaxPop) * 100));
 		PopulationText.text = Pop + "/" + MaxPop;
 
 		HealthSphere.SetFloat("Value",((Health / MaxHealth) * 100));
-		HealthText.text = Health + "/" + MaxHealth;
+		HealthText.text = (Health * 100) + "/" + (MaxHealth * 100);
 
 		GameObject.Find ("Money_text").GetComponent<Text> ().text = Cash.ToString();
 
@@ -193,6 +200,7 @@ public class Manager : MonoBehaviour {
 		}
 
 	IEnumerator estanciar(){
+		houses++;
 		habitants = habitants + 2;
 		GameObject A = (GameObject)Instantiate (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 0;
@@ -228,5 +236,14 @@ public class Manager : MonoBehaviour {
 		Health = Health + 5;	
 	}
 
+	public int ContaminadeHouses(){
+		int x = 0;
+		foreach (GameObject n in GameObject.FindGameObjectsWithTag("Building")) {
+			if(n.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo>().contaminada == true ){
+				x++;
+			}
+		}
+		return x;
+	}
 
 }

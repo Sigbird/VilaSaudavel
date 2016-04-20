@@ -45,6 +45,7 @@ public class WastedTerrain : MonoBehaviour {
 		
 			if (GetComponent<SpriteRenderer> ().enabled == true && this.EventType == EEventType.HotDog && Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" ) {
 				obj.GetComponent<HabitantMovement> ().obeso = true;
+				Events.DialogSequence = 1;
 			}
 		}
 

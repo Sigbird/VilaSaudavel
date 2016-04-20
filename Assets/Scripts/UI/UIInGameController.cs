@@ -11,14 +11,23 @@ public class UIInGameController : MonoBehaviour {
 	public GameObject uiBackBuildButon;
 	public GameObject buildBackground;
 	public GameObject uiBuildingOptions;
+	public GameObject uiBuildingButton;
 	public GameObject uiBuildingOptions2;
+	public GameObject uiBuildingButton2;
 	public GameObject uiBuildingOptions3;
+	public GameObject uiBuildingButton3;
 	public GameObject uiBuildingOptions4;
+	public GameObject uiBuildingButton4;
 	public GameObject uiBuildingOptions5;
+	public GameObject uiBuildingButton5;
 	public GameObject uiBuildingOptions6;
+	public GameObject uiBuildingButton6;
 	public GameObject uiBuildingOptions7;
+	public GameObject uiBuildingButton7;
 	public GameObject uiBuildingOptions8;
+	public GameObject uiBuildingButton8;
 	public GameObject uiBuildingOptions9;
+	public GameObject uiBuildingButton9;
 
 
 	//STATISTICS_UI
@@ -54,6 +63,14 @@ public class UIInGameController : MonoBehaviour {
 		buildBackground.SetActive (true);			//Ativa o background
 		buildBG.SetActive (true);					//Ativa o panel background (tela cinza de fundo)
 		openBuildOptions.SetTrigger ("Pressed");	//Dispara o trigger da animaçao
+		if (PlayerPrefs.GetInt ("fase") == 1) {
+			uiBuildingButton5.SetActive(true);
+		} else if (PlayerPrefs.GetInt ("fase") >= 1) {
+			uiBuildingButton5.SetActive(true);
+			uiBuildingButton7.SetActive(true);
+		}
+
+
 	}
 
 	public void DeactiveBuildMode(){

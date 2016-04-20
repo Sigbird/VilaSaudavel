@@ -117,6 +117,7 @@ public class Events : MonoBehaviour {
 				GameObject.Find("DialogImage").GetComponent<Image>().sprite = Dr; 
 			}
 			StartDialog ("Oh Não! Um foco de dengue foi detectado! Rápido vamos contruir um posto de saúde!", 0, 0);
+			this.contamination = false;
 			first_time_dengue = false;
 		}
 
@@ -128,26 +129,34 @@ public class Events : MonoBehaviour {
 			StartDialog ("Parabéns! Postos de saúde ajudam a manter a saúde nas casas, uma família doente contribui menos para os recursos da vila.", 0, 0);
 			first_time_agent = false;
 		}
-//		Debug.Log (DialogSequence);
+
+		//SEGUNDA FASE
 		if (second_intro) {
 			if(DialogSequence == 0){
 				StartDialog("Prepare-se! Agora novas ameaças afetarão a saúde da sua vila!", Screen.height/2, Screen.width/2 - 400);
+			}else if (DialogSequence == 1){
+				StartDialog("Atenção maus hábitos alimentares estão levando seus moradores a obesidade, eles necessitam praticar ativdades fisicas!", Screen.height/2, Screen.width/2 - 400);
+				second_intro = false;
 			}
 		}
 
+		//TERCEIRA FASE
 		if (third_intro) {
 			if(DialogSequence == 0){
 				StartDialog("Muito Bem! Agora precisará usar tudo que aprendeu até aqui para firmar sua vila!", Screen.height/2, Screen.width/2 - 400);
+			}else if (contamination){
+				StartDialog("Cuidado! Falta de saneamento e tratamento de esgoto podem trazer doenças e problemas para as casas e moradores!", Screen.height/2, Screen.width/2 - 400);
+				third_intro = false;
+				contamination = false;
 			}
 		}
 
 		foreach (GameObject n in GameObject.FindGameObjectsWithTag("Building")) {
-		if(n.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo>().contaminada == true){
+		if(n.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo>().contaminada == true ){
 				this.contamination = true;
 			}else{
 				this.contamination = false;
 		}
-
 		}
 
 		if (Input.GetMouseButtonDown (0) && examin == true) {
@@ -215,7 +224,7 @@ public class Events : MonoBehaviour {
 				WastedText.GetComponent<DialogInfoPanel> ().Descricao.color = Color.red;
 				WastedText.GetComponent<DialogInfoPanel> ().Status.text = "Contaminado";
 				WastedText.GetComponent<DialogInfoPanel> ().Status.color = Color.red;
-				WastedText.GetComponent<DialogInfoPanel> ().Info.text = "Aumenta o risco de contaminaçao de moradores proximos.";
+				WastedText.GetComponent<DialogInfoPanel> ().Info.text = "Um Paraiso para reproduçao do mosquito Aedes Aegypti e suas doenças!";
 				WastedText.GetComponent<DialogInfoPanel> ().Info.color = Color.red;
 				WastedText.GetComponent<DialogInfoPanel> ().ilustracao.sprite = House.GetComponent<SpriteRenderer>().sprite ;
 				SelectedBuilding = House;
@@ -298,6 +307,8 @@ public class Events : MonoBehaviour {
 	public void CloseWasteLand(){
 		SelectedBuilding.GetComponent<SpriteRenderer> ().enabled = false;
 	}
+
+
 
 
 	public void TesteRevoada(){

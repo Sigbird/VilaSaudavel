@@ -135,6 +135,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		//Sprites de Rotaçao do Objeto
 		///////////////////////////////////////////////////
 		public Sprite[] SpriteRotation;
+		public Sprite[] SpriteRotationUpgrade;
 		public int spriterot;
 
 
@@ -201,7 +202,11 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 		}
 
 
-
+		public void Upgrade(){
+			Sprite.sprite = SpriteRotationUpgrade [spriterot];
+			BuildingInfo.renda = 200;
+			
+		}
 
 		/// <summary>
 		/// Calcula a posicao do objeto com base no tile que se encontra
@@ -322,6 +327,8 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 			}
 		
 		}
+
+
 
 		
 
