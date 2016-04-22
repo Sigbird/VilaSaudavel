@@ -47,7 +47,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: square_plaza_0
+    - name: 
       rect:
         serializedVersion: 2
         x: 0
@@ -55,9 +55,9 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: .494437486, y: .333124787}
+      pivot: {x: .5, y: .300000012}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: square_plaza_1
+    - name: 
       rect:
         serializedVersion: 2
         x: 515
@@ -65,9 +65,9 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: .488874912, y: .327562273}
+      pivot: {x: .5, y: .300000012}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: square_plaza_2
+    - name: 
       rect:
         serializedVersion: 2
         x: 1027
@@ -75,9 +75,9 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: .494437456, y: .316437274}
+      pivot: {x: .5, y: .300000012}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: square_plaza_3
+    - name: 
       rect:
         serializedVersion: 2
         x: 1536
@@ -85,7 +85,7 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: .505562544, y: .327562273}
+      pivot: {x: .5, y: .300000012}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

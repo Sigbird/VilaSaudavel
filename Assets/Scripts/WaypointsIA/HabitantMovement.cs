@@ -5,6 +5,7 @@ public class HabitantMovement : MonoBehaviour {
 	public float speed;
 	public GameObject next;
 	public Animator sprite;
+	public Animator spritefat;
 	public Animator notifications;
 	public SpriteRenderer renderer;
 	public int character;
@@ -142,6 +143,20 @@ public class HabitantMovement : MonoBehaviour {
 
 		sprite.SetFloat ("Speedx", rigidbody.velocity.x);
 		sprite.SetFloat ("Speedy", rigidbody.velocity.z);
+
+		spritefat.SetInteger ("Caracter", sprite.GetInteger ("Caracter"));
+
+		spritefat.SetFloat ("Speedx", rigidbody.velocity.x);
+		spritefat.SetFloat ("Speedy", rigidbody.velocity.z);
+
+		if (obeso) {
+			spritefat.enabled = true;
+			sprite.enabled = false;
+		} else {
+			spritefat.enabled = false;
+			sprite.enabled = true;
+		}
+
 	}
 
 	public void Teste(){
@@ -159,7 +174,7 @@ public class HabitantMovement : MonoBehaviour {
 	}
 
 	IEnumerator Sickness(){
-		if (contaminado || obeso) {
+		if (contaminado) {
 			renderer.color = Color.magenta;
 			yield return new WaitForSeconds (1);
 			renderer.color = Color.white;

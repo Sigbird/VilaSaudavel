@@ -134,7 +134,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 				if (Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.SimpleHouse) {
 					float x = Random.value;
-					if ( x <= 0.5 && obj.GetComponent<HabitantMovement>().beenInHouse == false) {
+					if ( x <= 1 && obj.GetComponent<HabitantMovement>().beenInHouse == false) {
 						obj.GetComponent<HabitantMovement>().beenInHouse = true;
 						StartCoroutine(ReceiveHabitant(obj));
 					}

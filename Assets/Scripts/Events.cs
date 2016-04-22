@@ -134,6 +134,8 @@ public class Events : MonoBehaviour {
 		if (second_intro) {
 			if(DialogSequence == 0){
 				StartDialog("Prepare-se! Agora novas ameaças afetarão a saúde da sua vila!", Screen.height/2, Screen.width/2 - 400);
+				House2.GetComponent<Button>().interactable = true;
+				House3.GetComponent<Button>().interactable = true;
 			}else if (DialogSequence == 1){
 				StartDialog("Atenção maus hábitos alimentares estão levando seus moradores a obesidade, eles necessitam praticar ativdades fisicas!", Screen.height/2, Screen.width/2 - 400);
 				second_intro = false;
@@ -144,6 +146,8 @@ public class Events : MonoBehaviour {
 		if (third_intro) {
 			if(DialogSequence == 0){
 				StartDialog("Muito Bem! Agora precisará usar tudo que aprendeu até aqui para firmar sua vila!", Screen.height/2, Screen.width/2 - 400);
+				House2.GetComponent<Button>().interactable = true;
+				House3.GetComponent<Button>().interactable = true;
 			}else if (contamination){
 				StartDialog("Cuidado! Falta de saneamento e tratamento de esgoto podem trazer doenças e problemas para as casas e moradores!", Screen.height/2, Screen.width/2 - 400);
 				third_intro = false;
@@ -188,6 +192,7 @@ public class Events : MonoBehaviour {
 
 	public void StartDialog(string text, int x, int y){
 		Time.timeScale = 0;
+		GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 		DialogText.SetActive(true);
 		TextDialog.GetComponent<Text> ().text = text;
 	//	Hand.transform.position = new Vector3 (x, y, 0);
@@ -196,6 +201,7 @@ public class Events : MonoBehaviour {
 
 	public void PlayDialog(string text){
 		Time.timeScale = 0;
+		GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 		DialogText.SetActive(true);
 		TextDialog.GetComponent<Text> ().text = text;
 		//	Hand.transform.position = new Vector3 (x, y, 0);
@@ -297,11 +303,14 @@ public class Events : MonoBehaviour {
 
 	public void EndDialog(){
 		Time.timeScale = 1;
+		GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 1;
 		DialogText.SetActive(false);
 		DialogText2.SetActive(false);
 		WastedText.SetActive(false);
 		Hand.transform.position = new Vector3 (-100, -100, 0);
 		CamController.enabled = false;
+		if(GameObject.Find("Upgrade") != null)
+		GameObject.Find("Upgrade").SetActive(false);
 	}
 
 	public void CloseWasteLand(){

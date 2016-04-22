@@ -58,6 +58,7 @@ public class Manager : MonoBehaviour {
 
 		if (Cash >= 300) {
 			GameObject.Find("Events").GetComponent<Events>().Victory();
+			PlayerPrefs.SetInt ("fase", Events.FaseControler + 1);
 		}
 
 		if (habitants >= 25) {

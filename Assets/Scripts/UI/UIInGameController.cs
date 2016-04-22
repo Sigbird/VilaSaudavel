@@ -51,9 +51,10 @@ public class UIInGameController : MonoBehaviour {
 //		Debug.Log (AudioListener.volume);
 		AudioListener.volume = gamevolume;
 
-		if(gamespeed>= 0 && gamespeed <=2)
-			Time.timeScale = gamespeed;
+	if(gamespeed>= 0 && gamespeed <=2)
+		Time.timeScale = gamespeed;
 
+//		Debug.Log (gamespeed);
 	}
 
     #region BUILDMENU

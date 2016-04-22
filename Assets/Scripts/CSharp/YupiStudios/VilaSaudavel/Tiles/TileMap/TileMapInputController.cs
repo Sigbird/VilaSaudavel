@@ -374,6 +374,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 						WindowPanel.Info.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
 						WindowPanel.Status.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status;
 						WindowPanel.ilustracao.sprite = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
+							GameObject.Find("Upgrade").SetActive(true);
 							if(info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status == "Contaminada"){
 								WindowPanel.Info.color = Color.red;
 								WindowPanel.Status.color = Color.red;
