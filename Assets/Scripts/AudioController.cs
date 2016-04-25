@@ -34,7 +34,7 @@ public class AudioController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Source = GetComponent<AudioSource> ();
-		Source.volume = 0.2f;
+		Source.volume = PlayerPrefs.GetFloat("volume");
 		//PlayState (EAudioState.Background);
 		Source.clip = backGroundSound;
 		Source.Play ();

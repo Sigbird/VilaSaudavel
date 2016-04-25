@@ -8,15 +8,23 @@ public class Manager : MonoBehaviour {
 
 	private int houses;
 
+
+	// Cash
 	public static int Cash;
 
+	public static int CashGoal;
+
+	//Pop
 	public static float Pop;
 
 	public static float MaxPop;
 
+	//Health
 	public static float Health;
 
 	public static float MaxHealth;
+
+
 
 	public Animator PopulationSphere;
 
@@ -42,23 +50,59 @@ public class Manager : MonoBehaviour {
 
 		houses = 0;
 
-		Cash = 100;
+		if (PlayerPrefs.HasKey ("fase")) {
+			switch (PlayerPrefs.GetInt ("fase")) {
+			case 0:
 
-		Health = 100;
+				Cash = 100;
+				CashGoal = 300;
 
-		MaxHealth = 200;
+				Health = 100;
+				MaxHealth = 200;
 
-		MaxPop = 100;
+				Pop = 0;
+				MaxPop = 30;
+				break;
+			case 1:
 
-		Pop = 0;
+				Cash = 100;
+				CashGoal = 500;
+				
+				Health = 100;
+				MaxHealth = 300;
+				
+				Pop = 0;
+				MaxPop = 40;
+				break;
+			case 2:
+
+				Cash = 100;
+				CashGoal = 700;
+				
+				Health = 100;
+				MaxHealth = 400;
+				
+				Pop = 0;
+				MaxPop = 50;
+				break;
+			default:
+				break;
+			}
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Cash >= 300) {
+		if (Cash >= 300 && Pop >= 30 && Health >= 200 && PlayerPrefs.GetInt ("fase") == 0) {
 			GameObject.Find("Events").GetComponent<Events>().Victory();
-			PlayerPrefs.SetInt ("fase", Events.FaseControler + 1);
+			//PlayerPrefs.SetInt ("fase", Events.FaseControler + 1);
+		}else if (Cash >= 500 && Pop >= 40 && Health >= 300 && PlayerPrefs.GetInt ("fase") == 1) {
+			GameObject.Find("Events").GetComponent<Events>().Victory();
+			//PlayerPrefs.SetInt ("fase", Events.FaseControler + 1);
+		}else if (Cash >= 700 && Pop >= 50 && Health >= 400 && PlayerPrefs.GetInt ("fase") == 2) {
+			GameObject.Find("Events").GetComponent<Events>().Victory();
+			//PlayerPrefs.SetInt ("fase", Events.FaseControler + 1);
 		}
 
 		if (habitants >= 25) {
@@ -70,15 +114,15 @@ public class Manager : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Space))
 			Cash++;
 
-		Health = houses - ContaminadeHouses ();
+		Health = (houses - ContaminadeHouses ())*100;
 
-		MaxHealth = houses;
+		MaxHealth = houses *100;
 
 		PopulationSphere.SetFloat("Value",((Pop / MaxPop) * 100));
 		PopulationText.text = Pop + "/" + MaxPop;
 
 		HealthSphere.SetFloat("Value",((Health / MaxHealth) * 100));
-		HealthText.text = (Health * 100) + "/" + (MaxHealth * 100);
+		HealthText.text = (Health) + "/" + (MaxHealth);
 
 		GameObject.Find ("Money_text").GetComponent<Text> ().text = Cash.ToString();
 
@@ -105,7 +149,7 @@ public class Manager : MonoBehaviour {
 			GameObject.Find ("StatisticCash").GetComponent<Text> ().text = Cash.ToString ();
 
 		if (GameObject.Find ("StatisticCashGoal") != null)
-			GameObject.Find ("StatisticCashGoal").GetComponent<Text> ().text = "300";
+			GameObject.Find ("StatisticCashGoal").GetComponent<Text> ().text = CashGoal.ToString();
 
 		if (GameObject.Find ("StatisticCashTitle") != null)
 			GameObject.Find ("StatisticCashTitle").GetComponent<Text> ().text = "A Vila gera " + ((Pop/10)*120).ToString() + " moedas por mês";
@@ -120,7 +164,7 @@ public class Manager : MonoBehaviour {
 			GameObject.Find ("StatisticHealt").GetComponent<Text> ().text = Health.ToString ();
 		
 		if (GameObject.Find ("StatisticHealtGoal") != null)
-			GameObject.Find ("StatisticHealtGoal").GetComponent<Text> ().text = "200";
+			GameObject.Find ("StatisticHealtGoal").GetComponent<Text> ().text = MaxHealth.ToString ();
 
 		if (GameObject.Find ("StatisticHealtTitle") != null)
 			GameObject.Find ("StatisticHealtTitle").GetComponent<Text> ().text = "A Vila possui " + Health.ToString() + " de Saude";
@@ -134,7 +178,7 @@ public class Manager : MonoBehaviour {
 			GameObject.Find ("StatisticPop").GetComponent<Text> ().text = Pop.ToString ();
 		
 		if (GameObject.Find ("StatisticPopGoal") != null)
-			GameObject.Find ("StatisticPopGoal").GetComponent<Text> ().text = "100";
+			GameObject.Find ("StatisticPopGoal").GetComponent<Text> ().text = MaxPop.ToString ();
 		
 		if (GameObject.Find ("StatisticPopTitle") != null)
 			GameObject.Find ("StatisticPopTitle").GetComponent<Text> ().text = "A Vila possui " + Health.ToString() + " de Saude";

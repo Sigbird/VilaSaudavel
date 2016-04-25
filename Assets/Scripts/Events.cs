@@ -7,6 +7,7 @@ public class Events : MonoBehaviour {
 	private static bool first_time_agent;
 	private static bool first_time_dengue;
 	private static bool second_intro;
+	private static bool first_time_praca;
 	private static bool third_intro;
 	public static bool creatures;
 	public bool examin;
@@ -20,6 +21,7 @@ public class Events : MonoBehaviour {
 	public static int DialogSequence;
 	public static int FaseControler;
 	public GameObject Hand;
+	public GameObject SkipStageButton;
 	public Sprite Image;
 	public Sprite Agent;
 	public Sprite Dr;
@@ -47,32 +49,49 @@ public class Events : MonoBehaviour {
 		//TextDialog = GameObject.Find ("TextDialog");
 		switch (FaseControler) {
 		case 0:
+			// 1 fase
 			first_time_agent = true;
 			first_time = true;
 			first_time_dengue = true;
+			// 2 fase
 			second_intro = false;
+			first_time_praca = false;
+			// 3 fase
 			third_intro = false;
 			break;
 		case 1:
+			// 1 fase
 			first_time_agent = false;
 			first_time = false;
 			first_time_dengue = false;
+			// 2 fase
 			second_intro = true;
+			first_time_praca = true;
+			// 3 fase
 			third_intro = false;
 			break;
 		case 2:
+			// 1 fase
 			first_time_agent = false;
 			first_time = false;
 			first_time_dengue = false;
+			// 2 fase
 			second_intro = false;
+			first_time_praca = false;
+			// 3 fase
 			third_intro = true;
 			break;
 		default:
 			break;
 		}
-		
 
-//		if (!first_time) {
+		if (FaseControler >= 0) {
+			DialogText2.GetComponent<DialogInfoPanel> ().UpgradeButton.SetActive(false);
+		} else {
+			DialogText2.GetComponent<DialogInfoPanel> ().UpgradeButton.SetActive(true);
+		}
+
+			//		if (!first_time) {
 //			EndDialog();
 //		} else {
 //			StartDialog("Ola! Bem vindo a vila saudavel! Comece sua vila construindo com botao ao lado.");
@@ -122,10 +141,8 @@ public class Events : MonoBehaviour {
 		}
 
 		if (DialogSequence == 4 && first_time_agent == true) {
-			if(GameObject.Find("DialogImage") != null){
-				GameObject.Find("DialogImage").GetComponent<Image>().sprite = Agent; 
-			}
 
+			DialogText.GetComponent<DialogInfoPanel>().ilustracao.sprite = Agent;
 			StartDialog ("Parabéns! Postos de saúde ajudam a manter a saúde nas casas, uma família doente contribui menos para os recursos da vila.", 0, 0);
 			first_time_agent = false;
 		}
@@ -142,6 +159,11 @@ public class Events : MonoBehaviour {
 			}
 		}
 
+		if (first_time_praca == true && DialogSequence == 3) {
+			StartDialog("Muito bom, agora os moradores terão onde se exercitar e manter o corpo saudável!", Screen.height/2, Screen.width/2 - 400);
+			first_time_praca = false;
+		}
+
 		//TERCEIRA FASE
 		if (third_intro) {
 			if(DialogSequence == 0){
@@ -154,6 +176,12 @@ public class Events : MonoBehaviour {
 				contamination = false;
 			}
 		}
+
+		if (first_time_praca == true && DialogSequence == 3) {
+			StartDialog("Muito bom, agora os moradores terão onde se exercitar e manter o corpo saudável!", Screen.height/2, Screen.width/2 - 400);
+			first_time_praca = false;
+		}
+
 
 		foreach (GameObject n in GameObject.FindGameObjectsWithTag("Building")) {
 		if(n.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo>().contaminada == true ){
@@ -224,6 +252,7 @@ public class Events : MonoBehaviour {
 
 			if(House.GetComponent<SpriteRenderer>().enabled == true){
 			Time.timeScale = 0;
+				GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 				WastedText.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
 				WastedText.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
 				WastedText.GetComponent<DialogInfoPanel> ().Descricao.text = "Terreno Baldio";
@@ -242,6 +271,7 @@ public class Events : MonoBehaviour {
 			
 			if(House.GetComponent<SpriteRenderer>().enabled == true){
 				Time.timeScale = 0;
+				GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 				WastedText.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
 				WastedText.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
 				WastedText.GetComponent<DialogInfoPanel> ().Descricao.text = "Cachorro Quente";
@@ -260,6 +290,7 @@ public class Events : MonoBehaviour {
 			
 			if(House.GetComponent<SpriteRenderer>().enabled == true){
 				Time.timeScale = 0;
+				GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 				WastedText.GetComponent<DialogInfoPanel> ().Renda.text = "Renda\n" + 0;
 				WastedText.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + 0 ;
 				WastedText.GetComponent<DialogInfoPanel> ().Descricao.text = "Boeiro";
@@ -276,6 +307,7 @@ public class Events : MonoBehaviour {
 
 		if (House.tag == "Habitant" || House.tag == "Jaleco" ) {
 			Time.timeScale = 0;
+			GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 			DialogText2.GetComponent<DialogInfoPanel> ().Renda.text = "Idade\n" + House.GetComponent<HabitantMovement>().age;
 			DialogText2.GetComponent<DialogInfoPanel> ().Saude.text = "Saude \n" + House.GetComponent<HabitantMovement>().healt;
 			DialogText2.GetComponent<DialogInfoPanel> ().Descricao.text = House.GetComponent<HabitantMovement>().name;
@@ -295,9 +327,9 @@ public class Events : MonoBehaviour {
 			}
 			DialogText2.SetActive(true);
 		}
-			//DialogText2.GetComponent<DialogInfoPanel> ().ilustracao.
-
-		//TextDialog.GetComponent<Text> ().text = text;
+		if (House.tag == "Tunnel") {
+			SkipStageButton.SetActive(true);
+		}
 
 	}
 
@@ -352,12 +384,14 @@ public class Events : MonoBehaviour {
 
 	public void GameOver(){
 		GameOverWindow.SetActive (true);
+		GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 		Time.timeScale = 0;
 		
 	}
 
 	public void Victory(){
 		VictoryWindow.SetActive (true);
+		GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 		Time.timeScale = 0;
 	}
 

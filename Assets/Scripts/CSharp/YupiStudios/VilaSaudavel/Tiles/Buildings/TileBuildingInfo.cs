@@ -181,9 +181,9 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 		IEnumerator Sickness(){
 			if (contaminada) {
-				renderer.color = Color.magenta;
+				renderer.color = new Vector4(0.8f, 0,1,1);
 				yield return new WaitForSeconds (1);
-				renderer.color = Color.white;
+				renderer.color = new Vector4(0.8f, 0.5f,1,1);
 				yield return new WaitForSeconds (1);
 				StartCoroutine("Sickness");
 			} 
@@ -195,7 +195,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 			Obj.GetComponent<HabitantMovement> ().speed = 0;
 			Obj.GetComponent<HabitantMovement> ().renderer.enabled = false;
-				yield return new WaitForSeconds (3);
+				yield return new WaitForSeconds (10);
 			Obj.GetComponent<HabitantMovement> ().renderer.enabled = true;
 			Obj.GetComponent<HabitantMovement> ().speed = 30;
 
