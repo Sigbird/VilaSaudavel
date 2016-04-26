@@ -140,15 +140,20 @@ public class HabitantMovement : MonoBehaviour {
 		FollowTargetWitouthRotation (this.next, Random.Range (0.1f, 0.3f), Time.deltaTime * speed);
 		   
 //		Debug.Log (GetComponent<Rigidbody> ().velocity);
+		if (sprite.isActiveAndEnabled) {
 
 		sprite.SetFloat ("Speedx", rigidbody.velocity.x);
 		sprite.SetFloat ("Speedy", rigidbody.velocity.z);
+		
+		}
 
-		spritefat.SetInteger ("Caracter", sprite.GetInteger ("Caracter"));
 
-		spritefat.SetFloat ("Speedx", rigidbody.velocity.x);
-		spritefat.SetFloat ("Speedy", rigidbody.velocity.z);
+		if (spritefat.isActiveAndEnabled) {
+			spritefat.SetInteger ("Caracter", sprite.GetInteger ("Caracter"));
 
+			spritefat.SetFloat ("Speedx", rigidbody.velocity.x);
+			spritefat.SetFloat ("Speedy", rigidbody.velocity.z);
+		}
 		if (obeso) {
 			spritefat.enabled = true;
 			sprite.enabled = false;
@@ -187,7 +192,7 @@ public class HabitantMovement : MonoBehaviour {
 
 	IEnumerator InHouseCD(){
 		if (this.beenInHouse) {
-			yield return new WaitForSeconds (5);
+			yield return new WaitForSeconds (15);
 			this.beenInHouse = false;
 		} else {
 			yield return new WaitForSeconds (0.5f);

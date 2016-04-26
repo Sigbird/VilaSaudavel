@@ -98,13 +98,19 @@ public class Events : MonoBehaviour {
 //		}
 	}
 	
-	// Update is called once per frame
+
 	void FixedUpdate () {
 
 		if(creatures == true){
 			TesteRevoada();
 			TesteSeaCreature();
 			creatures = false;
+		}
+
+		if (GameObject.Find ("VolumeSlider") != null) {
+			AudioListener.volume = GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value;
+		} else {
+			AudioListener.volume = PlayerPrefs.GetFloat("volume");
 		}
 
 //		Debug.Log(Hand.GetComponent<Animator>().GetInteger("TutorialID"));

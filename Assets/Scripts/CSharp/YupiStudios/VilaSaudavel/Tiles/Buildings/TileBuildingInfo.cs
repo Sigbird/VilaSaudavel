@@ -117,9 +117,11 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 							this.saude = this.saude/2;
 							this.status = "Contaminada";
 							this.info = "'Estamos adoentados precisamos de ajuda de um agente de Saúde!'";
-						}else{
+						}else if(contaminada == false){
 							this.status = "Saudável";
 							this.info = "'Este parece um bom lugar para viver mas precisamos de mais vizinhos.'";
+							StopCoroutine("Sickness");
+							renderer.color = Color.white;
 						}
 					}
 

@@ -62,10 +62,10 @@ public class WastedTerrain : MonoBehaviour {
 			StartCoroutine("building");
 		}
 
-		if (x <= 0.01 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.ManHole && stage == 2) {
+		if (x <= 0.02 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.ManHole && stage == 2) {
 			StartCoroutine("building");
 		}
-		
+
 	}
 
 	IEnumerator building(){
@@ -74,6 +74,7 @@ public class WastedTerrain : MonoBehaviour {
 		Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.Building);
 		yield return new WaitForSeconds(0.5f);
 		GetComponent<SpriteRenderer> ().enabled = true;
+		Debug.Log (stage);
 	}
 
 	IEnumerator destroying(){

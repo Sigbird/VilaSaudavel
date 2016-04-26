@@ -116,7 +116,7 @@ public class Manager : MonoBehaviour {
 
 		Health = (houses - ContaminadeHouses ())*100;
 
-		MaxHealth = houses *100;
+		//MaxHealth = houses *100;
 
 		PopulationSphere.SetFloat("Value",((Pop / MaxPop) * 100));
 		PopulationText.text = Pop + "/" + MaxPop;
@@ -126,23 +126,21 @@ public class Manager : MonoBehaviour {
 
 		GameObject.Find ("Money_text").GetComponent<Text> ().text = Cash.ToString();
 
-		if (GameObject.Find ("VolumeSlider") != null)
-			AudioListener.volume = GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value;
 
 		if (GameObject.Find ("GoalsTitle") != null)
 			GameObject.Find ("GoalsTitle").GetComponent<Text> ().text = "Restam " + TimerScript.days + " Dias";
 
 		if (GameObject.Find ("HouseQtd1") != null)
-			GameObject.Find ("HouseQtd1").GetComponent<Text> ().text = GameObject.FindGameObjectsWithTag("Building").Length.ToString();
+			GameObject.Find ("HouseQtd1").GetComponent<Text> ().text = houses.ToString();
 
 		if (GameObject.Find ("HouseBonusCash1") != null)
-			GameObject.Find ("HouseBonusCash1").GetComponent<Text> ().text = "+" + (GameObject.FindGameObjectsWithTag ("Building").Length * 120).ToString ();
+			GameObject.Find ("HouseBonusCash1").GetComponent<Text> ().text = "+" + (houses* 120).ToString ();
 
 		if (GameObject.Find ("HouseBonusHealt1") != null)
 			GameObject.Find ("HouseBonusHealt1").GetComponent<Text> ().text = "+" + Health.ToString ();
 
 		if (GameObject.Find ("HouseBonusPop1") != null)
-			GameObject.Find ("HouseBonusPop1").GetComponent<Text> ().text = "+" + (GameObject.FindGameObjectsWithTag ("Building").Length * 10).ToString ();
+			GameObject.Find ("HouseBonusPop1").GetComponent<Text> ().text = "+" + (houses * 10).ToString ();
 
 		//Cash Statistic
 		if (GameObject.Find ("StatisticCash") != null)

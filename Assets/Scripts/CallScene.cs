@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CallScene : MonoBehaviour {
 
@@ -9,6 +10,14 @@ public class CallScene : MonoBehaviour {
 	void Start () {
 		if (Application.loadedLevelName == "Splash")
 			StartCoroutine ("Splash");
+
+		if (PlayerPrefs.GetInt ("fase") == 0) {
+			if(GameObject.Find ("SavedGameBtn") != null)
+			GameObject.Find ("SavedGameBtn").GetComponent<Button> ().interactable = false;
+		} else {
+			if(GameObject.Find ("SavedGameBtn") != null)
+			GameObject.Find ("SavedGameBtn").GetComponent<Button> ().interactable = true;
+		}
 	}
 	
 	// Update is called once per frame
@@ -72,6 +81,7 @@ public class CallScene : MonoBehaviour {
 	public IEnumerator FadeScene(string scenename){
 		FadeScreen.SetTrigger ("Fade");
 		PlayerPrefs.SetString ("SceneName", scenename);
+		PlayerPrefs.SetFloat ("volume", AudioListener.volume);
 		yield return new WaitForSeconds (0.35f);
 		Application.LoadLevel ("Loading");
 	}

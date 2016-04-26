@@ -16,7 +16,7 @@ public class LoadingScript : MonoBehaviour {
 	IEnumerator Loading(){
 		yield return new WaitForSeconds(3);
 		FadeScreen.SetTrigger ("Fade");
-		yield return new WaitForSeconds (0.35f);
+		yield return new WaitForSeconds (0.25f);
 		Application.LoadLevel (PlayerPrefs.GetString ("SceneName"));
 	}
 }

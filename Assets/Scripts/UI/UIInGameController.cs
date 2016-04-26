@@ -32,7 +32,7 @@ public class UIInGameController : MonoBehaviour {
 
 	//STATISTICS_UI
 	public float gamespeed {get; set;}
-	public float gamevolume {get; set;}
+//	public float gamevolume {get; set;}
 
 	//BACKGROUND
 	public GameObject buildBG;
@@ -44,12 +44,12 @@ public class UIInGameController : MonoBehaviour {
 
 	void Start(){
 		gamespeed = 1;
-		gamevolume = 0.5f;
+	//	gamevolume = 0.5f;
 	}
 
 	void Update(){
 //		Debug.Log (AudioListener.volume);
-		AudioListener.volume = gamevolume;
+	//	AudioListener.volume = gamevolume;
 
 	if(gamespeed>= 0 && gamespeed <=2)
 		Time.timeScale = gamespeed;
@@ -68,6 +68,7 @@ public class UIInGameController : MonoBehaviour {
 			uiBuildingButton5.SetActive(true);
 		} else if (PlayerPrefs.GetInt ("fase") >= 1) {
 			uiBuildingButton5.SetActive(true);
+			uiBuildingButton3.SetActive(true);
 			uiBuildingButton7.SetActive(true);
 		}
 

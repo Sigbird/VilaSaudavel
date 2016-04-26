@@ -374,7 +374,6 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 						WindowPanel.Info.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().info;
 						WindowPanel.Status.text = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status;
 						WindowPanel.ilustracao.sprite = info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().ilustracao;
-							WindowPanel.UpgradeButton.SetActive(true);
 							if(info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status == "Contaminada"){
 								WindowPanel.Info.color = Color.red;
 								WindowPanel.Status.color = Color.red;
@@ -389,8 +388,15 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 								WindowPanel.UpgradeButton.GetComponent<Button>().interactable = true;
 								WindowPanel.DestroyButton.GetComponent<Button>().interactable = true;
 							}
+						if(info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().buildingType == YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo.EBuildingType.SimpleHouse){
+								WindowPanel.UpgradeButton.SetActive(true);
+								if(PlayerPrefs.GetInt("fase")<1){
+									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = false;
+								}else{
+									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = true;
+								}
+							}
 						WindowPanel.DestroyButton.SetActive(true);
-						WindowPanel.UpgradeButton.SetActive(true);
 						DialogWindow.SetActive(true);
 						}
 
