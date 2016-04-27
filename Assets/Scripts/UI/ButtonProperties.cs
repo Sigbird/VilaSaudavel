@@ -23,8 +23,8 @@ public class ButtonProperties : MonoBehaviour {
 	}
 	
 	public void OnClick(){
-		//_isSelected = true;
-		buttonsController.UpdateButtons (thisButton);
+//		_isSelected = true;
+//		buttonsController.UpdateButtons (thisButton);
 	}
 	
 	public void ChangeSprite(){

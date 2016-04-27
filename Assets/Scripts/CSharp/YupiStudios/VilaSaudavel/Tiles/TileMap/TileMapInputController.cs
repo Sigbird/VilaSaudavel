@@ -395,6 +395,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 								}else{
 									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = true;
 								}
+							}else{
+								WindowPanel.UpgradeButton.SetActive(false);
 							}
 						WindowPanel.DestroyButton.SetActive(true);
 						DialogWindow.SetActive(true);

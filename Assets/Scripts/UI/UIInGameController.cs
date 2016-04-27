@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UIInGameController : MonoBehaviour {
 
 	//BUTTONS
+	public Slider SpeedSlider;
 	public GameObject uiFrontPanel;
 	public GameObject uiBuildButton;
 	public GameObject uiFinishBuildButton;
@@ -54,6 +56,8 @@ public class UIInGameController : MonoBehaviour {
 	if(gamespeed>= 0 && gamespeed <=2)
 		Time.timeScale = gamespeed;
 
+
+		SpeedSlider.value = gamespeed;
 //		Debug.Log (gamespeed);
 	}
 

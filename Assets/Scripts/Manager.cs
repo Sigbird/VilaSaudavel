@@ -8,6 +8,8 @@ public class Manager : MonoBehaviour {
 
 	private int houses;
 
+	public int Upgrades = 0;
+
 
 	// Cash
 	public static int Cash;
@@ -133,14 +135,20 @@ public class Manager : MonoBehaviour {
 		if (GameObject.Find ("HouseQtd1") != null)
 			GameObject.Find ("HouseQtd1").GetComponent<Text> ().text = houses.ToString();
 
+		if (GameObject.Find ("HouseQtd2") != null)
+			GameObject.Find ("HouseQtd2").GetComponent<Text> ().text = Upgrades.ToString();
+
 		if (GameObject.Find ("HouseBonusCash1") != null)
 			GameObject.Find ("HouseBonusCash1").GetComponent<Text> ().text = "+" + (houses* 120).ToString ();
+
+		if (GameObject.Find ("HouseBonusCash1") != null)
+			GameObject.Find ("HouseBonusCash1").GetComponent<Text> ().text = "+" + (Upgrades* 240).ToString ();
 
 		if (GameObject.Find ("HouseBonusHealt1") != null)
 			GameObject.Find ("HouseBonusHealt1").GetComponent<Text> ().text = "+" + Health.ToString ();
 
 		if (GameObject.Find ("HouseBonusPop1") != null)
-			GameObject.Find ("HouseBonusPop1").GetComponent<Text> ().text = "+" + (houses * 10).ToString ();
+			GameObject.Find ("HouseBonusPop1").GetComponent<Text> ().text = "+" + (houses+Upgrades * 10).ToString ();
 
 		//Cash Statistic
 		if (GameObject.Find ("StatisticCash") != null)
@@ -150,7 +158,7 @@ public class Manager : MonoBehaviour {
 			GameObject.Find ("StatisticCashGoal").GetComponent<Text> ().text = CashGoal.ToString();
 
 		if (GameObject.Find ("StatisticCashTitle") != null)
-			GameObject.Find ("StatisticCashTitle").GetComponent<Text> ().text = "A Vila gera " + ((Pop/10)*120).ToString() + " moedas por mês";
+			GameObject.Find ("StatisticCashTitle").GetComponent<Text> ().text = "A Vila gera " + (houses*120 + Upgrades*240).ToString() + " moedas por mês";
 
 		if (GameObject.Find ("CashStatBar") != null)
 			GameObject.Find ("CashStatBar").GetComponent<Animator> ().SetFloat ("Value", Cash);
@@ -277,6 +285,10 @@ public class Manager : MonoBehaviour {
 		A = (GameObject) Instantiate  (Habitant, RespawnHabitant.transform.position, Quaternion.identity);
 		A.GetComponent<HabitantMovement> ().character = 3;
 		Health = Health + 5;	
+	}
+
+	public void IncreaseUpgrades(){
+		this.Upgrades++;
 	}
 
 	public int ContaminadeHouses(){

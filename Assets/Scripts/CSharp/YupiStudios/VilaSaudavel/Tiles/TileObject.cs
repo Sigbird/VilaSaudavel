@@ -624,7 +624,7 @@ namespace YupiStudios.VilaSaudavel.Tiles {
 
 			foreach (GameObject x in GameObject.FindGameObjectsWithTag("Habitant")) {
 			
-				if (x != null && Vector3.Distance (x.transform.position, transform.position) < 1 && CurrentState != ETileObjectState.Moving){
+				if (x != null && Vector3.Distance (x.transform.position, transform.position) < 2 && CurrentState != ETileObjectState.Moving){
 					CurrentState = ETileObjectState.Placed;
 
 			}

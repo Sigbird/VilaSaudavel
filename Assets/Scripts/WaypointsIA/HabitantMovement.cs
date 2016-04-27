@@ -140,26 +140,29 @@ public class HabitantMovement : MonoBehaviour {
 		FollowTargetWitouthRotation (this.next, Random.Range (0.1f, 0.3f), Time.deltaTime * speed);
 		   
 //		Debug.Log (GetComponent<Rigidbody> ().velocity);
-		if (sprite.isActiveAndEnabled) {
+		if (obeso == false) {
 
 		sprite.SetFloat ("Speedx", rigidbody.velocity.x);
 		sprite.SetFloat ("Speedy", rigidbody.velocity.z);
 		
 		}
 
+		spritefat.SetInteger ("Caracter", sprite.GetInteger ("Caracter"));
 
-		if (spritefat.isActiveAndEnabled) {
-			spritefat.SetInteger ("Caracter", sprite.GetInteger ("Caracter"));
+//		Debug.Log(sprite.GetInteger("Caracter"));
+
+		if (obeso) {
 
 			spritefat.SetFloat ("Speedx", rigidbody.velocity.x);
 			spritefat.SetFloat ("Speedy", rigidbody.velocity.z);
 		}
-		if (obeso) {
-			spritefat.enabled = true;
-			sprite.enabled = false;
+
+		if (obeso && character != 3 && character != 1) {
+			spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			sprite.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 		} else {
-			spritefat.enabled = false;
-			sprite.enabled = true;
+			spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			sprite.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 		}
 
 	}

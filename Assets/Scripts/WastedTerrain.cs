@@ -54,7 +54,7 @@ public class WastedTerrain : MonoBehaviour {
 	public void Teste(){
 		
 		float x = Random.value;
-		if (x <= 0.03 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.WasteLand && stage == 0) {
+		if (x <= 0.03 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.WasteLand) {
 			StartCoroutine("building");
 		}
 
@@ -62,7 +62,7 @@ public class WastedTerrain : MonoBehaviour {
 			StartCoroutine("building");
 		}
 
-		if (x <= 0.02 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.ManHole && stage == 2) {
+		if (x <= 0.02 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.ManHole && stage != 0) {
 			StartCoroutine("building");
 		}
 

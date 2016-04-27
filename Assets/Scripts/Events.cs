@@ -107,11 +107,11 @@ public class Events : MonoBehaviour {
 			creatures = false;
 		}
 
-		if (GameObject.Find ("VolumeSlider") != null) {
-			AudioListener.volume = GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value;
-		} else {
-			AudioListener.volume = PlayerPrefs.GetFloat("volume");
-		}
+//		if (GameObject.Find ("VolumeSlider") != null) {
+//			AudioListener.volume = GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value;
+//		} else {
+//			AudioListener.volume = PlayerPrefs.GetFloat("volume");
+//		}
 
 //		Debug.Log(Hand.GetComponent<Animator>().GetInteger("TutorialID"));
 		if (first_time) {

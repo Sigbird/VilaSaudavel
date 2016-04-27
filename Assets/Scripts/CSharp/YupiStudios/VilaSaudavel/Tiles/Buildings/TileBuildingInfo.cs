@@ -129,9 +129,9 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Habitant")) {
 				
-				if (Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.Praca && obj.GetComponent<HabitantMovement>().obeso) {
+				if (Vector3.Distance (transform.position, obj.transform.position) <= 2 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.Praca && obj.GetComponent<HabitantMovement>().obeso) {
 					obj.GetComponent<HabitantMovement> ().obeso = false;
-					StartCoroutine(ReceiveHabitant(obj));
+					//StartCoroutine(ReceiveHabitant(obj));
 				}
 
 				if (Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.SimpleHouse) {

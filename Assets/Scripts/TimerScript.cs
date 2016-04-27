@@ -11,7 +11,7 @@ public class TimerScript : MonoBehaviour {
 	public Animator Alert;
 	// Use this for initialization
 	void Start () {
-		days = 120;
+		days = 120	;
 		month = false;
 	}
 	
@@ -33,8 +33,9 @@ public class TimerScript : MonoBehaviour {
 			month = true;
 		}
 
-		if (days <= 0) {
+		if (days == 0) {
 			GameObject.Find("Events").GetComponent<Events>().GameOver();
+			days = -1;
 		}
 
 		TimerUI.GetComponent<Text> ().text = "Restam " + (int)days + " dias";
