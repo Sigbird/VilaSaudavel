@@ -18,6 +18,7 @@ public class Events : MonoBehaviour {
 	public GameObject TextDialog;
 	public GameObject GameOverWindow;
 	public GameObject VictoryWindow;
+	public GameObject VictoryWindowEnding;
 	public static int DialogSequence;
 	public static int FaseControler;
 	public GameObject Hand;
@@ -397,6 +398,12 @@ public class Events : MonoBehaviour {
 
 	public void Victory(){
 		VictoryWindow.SetActive (true);
+		GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
+		Time.timeScale = 0;
+	}
+
+	public void VictoryEnding(){
+		VictoryWindowEnding.SetActive (true);
 		GameObject.Find ("Canvas").GetComponent<UIInGameController> ().gamespeed = 0;
 		Time.timeScale = 0;
 	}

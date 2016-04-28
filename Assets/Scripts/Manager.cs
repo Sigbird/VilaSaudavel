@@ -103,7 +103,7 @@ public class Manager : MonoBehaviour {
 			GameObject.Find("Events").GetComponent<Events>().Victory();
 			//PlayerPrefs.SetInt ("fase", Events.FaseControler + 1);
 		}else if (Cash >= 700 && Pop >= 50 && Health >= 400 && PlayerPrefs.GetInt ("fase") == 2) {
-			GameObject.Find("Events").GetComponent<Events>().Victory();
+			GameObject.Find("Events").GetComponent<Events>().VictoryEnding();
 			//PlayerPrefs.SetInt ("fase", Events.FaseControler + 1);
 		}
 

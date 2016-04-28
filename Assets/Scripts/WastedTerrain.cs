@@ -44,7 +44,7 @@ public class WastedTerrain : MonoBehaviour {
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Habitant")) {
 		
 			if (GetComponent<SpriteRenderer> ().enabled == true && this.EventType == EEventType.HotDog && Vector3.Distance (transform.position, obj.transform.position) <= 1 && obj.name != "Jaleco" && obj.name != "Rebeca" ) {
-				obj.GetComponent<HabitantMovement> ().obeso = true;
+				obj.GetComponent<HabitantMovement> ().Engordar();
 				Events.DialogSequence = 1;
 			}
 		}
@@ -54,15 +54,15 @@ public class WastedTerrain : MonoBehaviour {
 	public void Teste(){
 		
 		float x = Random.value;
-		if (x <= 0.03 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.WasteLand) {
+		if (x <= 0.1 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.WasteLand) {
 			StartCoroutine("building");
 		}
 
-		if (x <= 0.02 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.HotDog && stage != 0) {
+		if (x <= 0.2 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.HotDog && stage != 0) {
 			StartCoroutine("building");
 		}
 
-		if (x <= 0.02 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.ManHole && stage != 0) {
+		if (x <= 0.1 && GetComponent<SpriteRenderer> ().enabled == false && this.EventType == EEventType.ManHole && stage != 0) {
 			StartCoroutine("building");
 		}
 
@@ -74,7 +74,7 @@ public class WastedTerrain : MonoBehaviour {
 		Camera.main.GetComponent<AudioController> ().PlayState (AudioController.EAudioState.Building);
 		yield return new WaitForSeconds(0.5f);
 		GetComponent<SpriteRenderer> ().enabled = true;
-		Debug.Log (stage);
+//		Debug.Log (stage);
 	}
 
 	IEnumerator destroying(){

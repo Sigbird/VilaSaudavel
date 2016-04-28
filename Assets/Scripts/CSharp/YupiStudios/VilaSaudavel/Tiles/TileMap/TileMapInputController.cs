@@ -392,6 +392,8 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 								WindowPanel.UpgradeButton.SetActive(true);
 								if(PlayerPrefs.GetInt("fase")<1){
 									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = false;
+								}else if(info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status == "Contaminada"){
+									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = false;
 								}else{
 									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = true;
 								}
@@ -710,18 +712,23 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 		public void DestroySelected()
 		{
 			if (selectedObject != null) {
+				if(selectedObject.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.TileObject> ().BuildingInfo.contaminada == false){
 //				Debug.Log (selectedObject.gameObject.name);
 				GameObject.Destroy (selectedObject.gameObject);
 				selectedObject = null;
+				}
 			}
 		}
 
 		public void DestroySelected3(){
 			
 			if (selectedObject != null) {
+				if(selectedObject.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.TileObject> ().BuildingInfo.contaminada == false){
+
 				//				Debug.Log (selectedObject.gameObject.name);
 				selectedObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 				selectedObject = null;
+				}
 			}
 		}
 

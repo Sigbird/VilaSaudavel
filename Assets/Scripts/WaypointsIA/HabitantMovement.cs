@@ -5,13 +5,16 @@ public class HabitantMovement : MonoBehaviour {
 	public float speed;
 	public GameObject next;
 	public Animator sprite;
+	public GameObject SpriteObject;
 	public Animator spritefat;
+	public GameObject SpriteObjectFat;
 	public Animator notifications;
 	public SpriteRenderer renderer;
 	public int character;
 	private float timer;
 	public float percentage;
 	public bool beenInHouse;
+	public bool changedSprite = false;
 
 	//Statistics
 	public int healt;
@@ -36,6 +39,7 @@ public class HabitantMovement : MonoBehaviour {
 		contaminadocd = true;
 		beenInHouse = false;
 		StartCoroutine ("InHouseCD");
+		Emagrece ();
 	}
 	
 	// Update is called once per frame
@@ -60,7 +64,7 @@ public class HabitantMovement : MonoBehaviour {
 			}
 			timer = 0;
 		}
-
+		if(sprite != null)
 		sprite.SetInteger ("Caracter", character);
 
 		if (character == 1) {
@@ -157,13 +161,13 @@ public class HabitantMovement : MonoBehaviour {
 			spritefat.SetFloat ("Speedy", rigidbody.velocity.z);
 		}
 
-		if (obeso && character != 3 && character != 1) {
-			spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-			sprite.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-		} else {
-			spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-			sprite.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-		}
+//		if (obeso && character != 3 && character != 1) {
+//			spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+//			sprite.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+//		} else {
+//			spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+//			sprite.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+//		}
 
 	}
 
@@ -195,7 +199,7 @@ public class HabitantMovement : MonoBehaviour {
 
 	IEnumerator InHouseCD(){
 		if (this.beenInHouse) {
-			yield return new WaitForSeconds (15);
+			yield return new WaitForSeconds (25);
 			this.beenInHouse = false;
 		} else {
 			yield return new WaitForSeconds (0.5f);
@@ -213,6 +217,18 @@ public class HabitantMovement : MonoBehaviour {
 			this.next = next.GetComponent<Waypoint> ().NextPoint ();
 			//FollowTargetWitouthRotation (this.next, Random.Range (0.1f, 0.3f), speed);
 		}
+	}
+
+	public void Engordar(){
+		spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		sprite.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		obeso = true;
+	}
+
+	public void Emagrece(){
+		spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		sprite.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		obeso = false;
 	}
 
 }

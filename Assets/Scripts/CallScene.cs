@@ -34,7 +34,7 @@ public class CallScene : MonoBehaviour {
 		if (VolumeSlider != null) {
 			VolumeSlider.value = ConfigVolume;
 		}
-		Debug.Log (ConfigVolume);
+//		Debug.Log (ConfigVolume);
 	}
 
 

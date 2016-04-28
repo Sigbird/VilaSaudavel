@@ -130,7 +130,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Habitant")) {
 				
 				if (Vector3.Distance (transform.position, obj.transform.position) <= 2 && obj.name != "Jaleco" && obj.name != "Rebeca" && this.buildingType == EBuildingType.Praca && obj.GetComponent<HabitantMovement>().obeso) {
-					obj.GetComponent<HabitantMovement> ().obeso = false;
+					obj.GetComponent<HabitantMovement> ().Emagrece();
 					//StartCoroutine(ReceiveHabitant(obj));
 				}
 
@@ -146,7 +146,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ManHole")) {
 				
-				if (Vector3.Distance (transform.position, obj.transform.position) <= 2.2f && this.buildingType == EBuildingType.Tratamento) {
+				if (Vector3.Distance (transform.position, obj.transform.position) <= 2.2f && this.tileObject.CurrentState == TileObject.ETileObjectState.Placed && this.buildingType == EBuildingType.Tratamento) {
 					obj.GetComponent<SpriteRenderer> ().enabled = false;
 				}
 				
@@ -196,9 +196,17 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		IEnumerator ReceiveHabitant(GameObject Obj){
 
 			Obj.GetComponent<HabitantMovement> ().speed = 0;
-			Obj.GetComponent<HabitantMovement> ().renderer.enabled = false;
+			if (Obj.GetComponent<HabitantMovement> ().obeso) {
+				Obj.GetComponent<HabitantMovement> ().SpriteObjectFat.GetComponent<SpriteRenderer> ().enabled = false;
+			} else {
+				Obj.GetComponent<HabitantMovement> ().SpriteObject.GetComponent<SpriteRenderer> ().enabled = false;
+			}
 				yield return new WaitForSeconds (10);
-			Obj.GetComponent<HabitantMovement> ().renderer.enabled = true;
+			if (Obj.GetComponent<HabitantMovement> ().obeso) {
+				Obj.GetComponent<HabitantMovement> ().SpriteObjectFat.GetComponent<SpriteRenderer> ().enabled = true;
+			} else {
+				Obj.GetComponent<HabitantMovement> ().SpriteObject.GetComponent<SpriteRenderer> ().enabled = true;
+			}
 			Obj.GetComponent<HabitantMovement> ().speed = 30;
 
 		}
