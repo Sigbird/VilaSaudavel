@@ -14,6 +14,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		private float monthcont;
 		public Animator notifications;
 		public SpriteRenderer renderer;
+		public bool Upgraded = false;
 		
 
 		//ESTATISTICAS
@@ -196,12 +197,14 @@ namespace YupiStudios.VilaSaudavel.Tiles.Buildings {
 		IEnumerator ReceiveHabitant(GameObject Obj){
 
 			Obj.GetComponent<HabitantMovement> ().speed = 0;
+			Obj.GetComponent<HabitantMovement> ().InHouse = true;
 			if (Obj.GetComponent<HabitantMovement> ().obeso) {
 				Obj.GetComponent<HabitantMovement> ().SpriteObjectFat.GetComponent<SpriteRenderer> ().enabled = false;
 			} else {
 				Obj.GetComponent<HabitantMovement> ().SpriteObject.GetComponent<SpriteRenderer> ().enabled = false;
 			}
 				yield return new WaitForSeconds (10);
+			Obj.GetComponent<HabitantMovement> ().InHouse = false;
 			if (Obj.GetComponent<HabitantMovement> ().obeso) {
 				Obj.GetComponent<HabitantMovement> ().SpriteObjectFat.GetComponent<SpriteRenderer> ().enabled = true;
 			} else {

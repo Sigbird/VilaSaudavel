@@ -14,6 +14,7 @@ public class HabitantMovement : MonoBehaviour {
 	private float timer;
 	public float percentage;
 	public bool beenInHouse;
+	public bool InHouse;
 	public bool changedSprite = false;
 
 	//Statistics
@@ -220,15 +221,19 @@ public class HabitantMovement : MonoBehaviour {
 	}
 
 	public void Engordar(){
-		spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-		sprite.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-		obeso = true;
+		if (this.InHouse == false) {
+			spritefat.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+			sprite.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			obeso = true;
+		}
 	}
 
 	public void Emagrece(){
-		spritefat.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-		sprite.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-		obeso = false;
+		if (this.InHouse == false) {
+			spritefat.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			sprite.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+			obeso = false;
+		}
 	}
 
 }

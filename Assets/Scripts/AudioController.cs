@@ -17,7 +17,10 @@ public class AudioController : MonoBehaviour {
 	
 		Disease,
 
-		Payment
+		Payment,
+
+		Magic
+
 	}
 
 
@@ -29,6 +32,8 @@ public class AudioController : MonoBehaviour {
 	public AudioClip cantDoIt;
 	public AudioClip disease;
 	public AudioClip payment;
+	public AudioClip magic;
+
 	//public EAudioState AudioState;
 
 	// Use this for initialization
@@ -66,6 +71,9 @@ public class AudioController : MonoBehaviour {
 			break;
 		case EAudioState.Payment:
 			this.Source.PlayOneShot (this.payment);
+			break;
+		case EAudioState.Magic:
+			this.Source.PlayOneShot (this.magic);
 			break;
 		default:
 			print ("Incorrect Audio Source.");

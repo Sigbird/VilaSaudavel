@@ -392,7 +392,7 @@ namespace YupiStudios.VilaSaudavel.Tiles.TileMap {
 								WindowPanel.UpgradeButton.SetActive(true);
 								if(PlayerPrefs.GetInt("fase")<1){
 									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = false;
-								}else if(info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status == "Contaminada"){
+								}else if(info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().status == "Contaminada" || info.transform.gameObject.GetComponent<YupiStudios.VilaSaudavel.Tiles.Buildings.TileBuildingInfo> ().Upgraded == true){
 									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = false;
 								}else{
 									WindowPanel.UpgradeButton.GetComponent<Button>().interactable = true;

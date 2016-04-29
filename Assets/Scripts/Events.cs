@@ -130,8 +130,8 @@ public class Events : MonoBehaviour {
 					GameObject.Find("DialogImage").GetComponent<Image>().sprite = Dr; 
 				}
 				StartDialog("Muito Bem! Agora moradores estão chegando a sua vila!", -100, -100);
-				CamController.enabled = true;
-				CamController.SetTrigger("Entrance");
+				//CamController.enabled = true;
+				//CamController.SetTrigger("Entrance");
 				House2.GetComponent<Button>().interactable = true;
 				House3.GetComponent<Button>().interactable = true;
 				first_time = false;
@@ -336,6 +336,7 @@ public class Events : MonoBehaviour {
 		}
 		if (House.tag == "Tunnel") {
 			SkipStageButton.SetActive(true);
+			Camera.main.GetComponent<AudioController>().PlayState(AudioController.EAudioState.Magic);
 		}
 
 	}
