@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WastedTerrain : MonoBehaviour {
+public class WastedTerrain1 : MonoBehaviour {
 	private float distance = 2.2f;
 	public Animator smoke;
 	private float count;
